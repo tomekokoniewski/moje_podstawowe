@@ -1,9 +1,10 @@
 package pl.tok.beginer;
 
 import static java.lang.Math.*;     //mat()
-
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.File;                //scnr()
+import java.io.FileNotFoundException; //scnr()
+import java.io.FileWriter;          //fileWriter()
+import java.io.IOException;         //fileWriter()
 import java.math.BigDecimal;        //bintBdeci()
 import java.text.ParseException;    //dateTime();
 import java.text.SimpleDateFormat;  //dateTime();
@@ -13,7 +14,7 @@ import java.util.regex.Pattern;     //pattMatch();
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
         drukuj();
         deklaracjeZmiennychStalych();
@@ -35,7 +36,8 @@ public class Main {
         sb();
         dateTime();
         pattMatch();
-        scanner();
+        bintBdeci();
+        fileWriter();
         //dodac scanner writer
         //dodac obsługę błędów
         //konstruktory
@@ -235,15 +237,29 @@ public class Main {
     }
 
 // -------- SCANNER
-    public static void scnr() {
+    public static void scnr() throws FileNotFoundException {
         System.out.println("\n-------SCANER");
 
-        Scanner odczyt = new Scanner(System.in);
+        Scanner odczyt = new Scanner(System.in);        //skaner czytający z klawiatury
         while(!odczyt.hasNextInt()){
             System.out.println("Podaj liczbę całkowitą");
             odczyt.nextLine();
         }
         System.out.println(odczyt.nextInt());
+
+        String text = "51 2 14 7";
+        Scanner scanner = new Scanner(text);            //skaner czytający ze zmiennej
+        while(scanner.hasNextInt()) {
+            int i = scanner.nextInt();
+            System.out.println(i); // 51 2 14 7
+        }
+
+        File file = new File("data/odczyt.txt");  //skaner czytający z pliku
+        Scanner scanner1 = new Scanner(file);
+        while(scanner1.hasNextLine()) {
+            String string = scanner1.nextLine();
+            System. out.println(string);
+        }
     }
 
 // -------- BIGINTEGER, BIGDECIMAL
@@ -292,7 +308,7 @@ public class Main {
 
 // -------- LISTY
     public static void arraylist() {
-        System.out.println("\n-------ARRAY TABLICA");
+        System.out.println("\n-------ARRAY LIST");
 
         ArrayList list1 = new ArrayList();
         list1.add(4.5);
@@ -305,16 +321,25 @@ public class Main {
             System. out.println(list1.get(i));
         }
 
-        for (java.lang.Object c : list1) {  //iteracja jak w przyp tabeli, tyle ze zmienna zamiast typu jest obiektem
-                                            // (w liscie sa rozne typy i nie moge zadeklarowac jednego)
+        for (java.lang.Object c : list1) {  //iteracja jak w przyp tabeli, tyle ze zmienna zamiast typu jest obiektem (w liscie sa rozne typy i nie moge zadeklarowac jednego)
             System. out.println(c);
+        }
 
         //przykładowe metody
         //list1.remove(0); // usunie wartość 4.5 - w indeks 0 wskoczy "aaa"
-         list1.isEmpty(); // false
+        list1.isEmpty(); // false
+        if (list1.contains(4.5)) { //sprawdzenie czy lista zawiera wartość
+            System.out.println("lista zawiera 4.5");
+        }
+
+        ArrayList<Integer> listaIntegerow = new ArrayList<>(); //przykład listy zawierającej jeden typ danych
+        listaIntegerow.add(1);
+        listaIntegerow.add(2);
+        listaIntegerow.add(3);
+        for(int x : listaIntegerow){
+            System.out.println(x);
         }
     }
-
 
 // -------- STRING BUILDER
     public static void sb() {
@@ -374,33 +399,15 @@ public class Main {
         }
     }
 
+    // -------- FILE WRITER - wyrażenia regularne
+    public static void fileWriter() throws IOException {
+        System.out.println("\n-------FILE WRITER");
 
-// -------- SCANNER
-    public static void scanner() {
-        System.out.println("\n-------SCANNER");
-
-        String text = "51 2 14 7";                  //scanner na zmiennej
-        Scanner scanner = new Scanner(text);
-        while(scanner.hasNextInt()) {
-            int i = scanner.nextInt();
-            System.out.println(i); // 51 2 14 7
-        }
-
-        String path = "test.txt";
-        File file = new File(path);
-        Scanner fileScanner = null;
-        try {
-            fileScanner = new Scanner(file);
-            System.out.println("Wczytano plik: "+path);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-            System.out.println("Nie znaleziono pliku: "+path);
-        }
-        while (fileScanner.hasNextLine()) {
-            System.out.println(fileScanner.nextLine());
-        }
-
+        FileWriter fw = new FileWriter("data/zapis.txt",true);
+        fw.write("nowa linia " + new Date() + "\n");
+        fw.close();
     }
+
 
 
 }
