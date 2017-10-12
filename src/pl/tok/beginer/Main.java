@@ -1,6 +1,7 @@
 package pl.tok.beginer;
 
 import static java.lang.Math.*;     //mat()
+
 import java.io.File;                //scnr()
 import java.io.FileNotFoundException; //scnr()
 import java.io.FileWriter;          //fileWriter()
@@ -12,7 +13,9 @@ import java.util.*;                 //rndm(), scanner()
 import java.util.regex.Matcher;     //pattMatch();
 import java.util.regex.Pattern;     //pattMatch();
 
-public class Main {
+import pl.tok.beginerNew.New;       //zaimportowanie mojego własnego pakietu aby móc po nim dziedziczyć
+
+public class Main extends New {     //klasa Main dziedziczy po klasie New, muszę ją jednak wcześniej zaimportować
 
     public static void main(String[] args) throws IOException {
 
@@ -36,58 +39,60 @@ public class Main {
         sb();
         dateTime();
         pattMatch();
-        bintBdeci();
         fileWriter();
-        //dodac scanner writer
+        modyfikatoryDostepu();
+        stat();
+        passParam();
+        tmp();
         //dodac obsługę błędów
         //konstruktory
     }
 
-// -------- DRUKOWANIE NA EKAN
-    public static void drukuj(){
+    // -------- DRUKOWANIE NA EKAN
+    public static void drukuj() {
         System.out.println("-------DRUKOWANIE");
         System.out.println("Ania");
-        System.out.println("Ania2\nJAN");	// znak \n to znak nowej linii
-        System.out.println('a'+'A'); 		// jeżeli w apostrofach to potraktuje jako cyfrę ASCII i da nam sumę - 162
-        System.out.println(1+2); 		// wynik - integer
-        System.out.println(1.0+2.0);		// wynik - double
-        System.out.println("cudzysłów \"");	// znak \" da nam cudzysłów
+        System.out.println("Ania2\nJAN");    // znak \n to znak nowej linii
+        System.out.println('a' + 'A');        // jeżeli w apostrofach to potraktuje jako cyfrę ASCII i da nam sumę - 162
+        System.out.println(1 + 2);        // wynik - integer
+        System.out.println(1.0 + 2.0);        // wynik - double
+        System.out.println("cudzysłów \"");    // znak \" da nam cudzysłów
         System.out.println(true);
-        System.out.println("\n");		// nowa linia
+        System.out.println("\n");        // nowa linia
         System.out.println("Piotr \t \t Pawel");// zmak \t to tabulator
     }
 
-// -------- DEKLAROWANIE ZMIENNYCH I STAŁYCH
-    public static void deklaracjeZmiennychStalych(){
+    // -------- DEKLAROWANIE ZMIENNYCH I STAŁYCH
+    public static void deklaracjeZmiennychStalych() {
         System.out.println("\n-------DEKLAROWANIE ZMIENNYCH I STAŁYCH");
 
-        int b;		// zadeklarowanie
-        b=0;		// przypisanie
-        int a=0;	// zadeklarowanie i przypisanie
-        int liczbaA=5, liczbaB=21;				//integer (cyfra całkowita)
-        char znak = 'A';					//pojedynczy znak unicode
-        double liczba1=1.1, liczba2=2.2;			//podwójna precyzja (cyfra max 15 miejsc po przecinku)
-        String ciag_znakow = "Dzień dobry kocham Cię"; 		//ciąg znaków
+        int b;        // zadeklarowanie
+        b = 0;        // przypisanie
+        int a = 0;    // zadeklarowanie i przypisanie
+        int liczbaA = 5, liczbaB = 21;                //integer (cyfra całkowita)
+        char znak = 'A';                    //pojedynczy znak unicode
+        double liczba1 = 1.1, liczba2 = 2.2;            //podwójna precyzja (cyfra max 15 miejsc po przecinku)
+        String ciag_znakow = "Dzień dobry kocham Cię";        //ciąg znaków
 
-        final double pi=3.14;	//deklaracja stałej
-        final int stała	= 3;	//deklaracja stałen
-        System.out.println("pi plus trzy wynosi "+(pi+stała));
+        final double pi = 3.14;    //deklaracja stałej
+        final int stała = 3;    //deklaracja stałen
+        System.out.println("pi plus trzy wynosi " + (pi + stała));
     }
 
-// -------- MODULO I LENGTH
-    public static void modLength(){
+    // -------- MODULO I LENGTH
+    public static void modLength() {
         System.out.println("\n-------MODULO I LENGTH");
 
         String ciag_znakow = "Dzień dobry kocham Cię";
-        int liczba1=5, liczba2=21;
+        int liczba1 = 5, liczba2 = 21;
 
-        System.out.println(ciag_znakow.length());		// ile znakow zawiera string ciag_znakow
-        System.out.println(liczba2%liczba1); 			// MODULO - reszta z dzielenia - możemy tak zprawdzac czy liczba jest parzysta.
+        System.out.println(ciag_znakow.length());        // ile znakow zawiera string ciag_znakow
+        System.out.println(liczba2 % liczba1);            // MODULO - reszta z dzielenia - możemy tak zprawdzac czy liczba jest parzysta.
         // 21 mod 5 da nam 1 (20 dzieli sie na 5 i do 21 zostaje 1)
     }
 
-// -------- INKREMENTACJA (zwiększanie wartości) i DEKREMENTACJA (zmniejszanie)
-    public static void inkr(){
+    // -------- INKREMENTACJA (zwiększanie wartości) i DEKREMENTACJA (zmniejszanie)
+    public static void inkr() {
         System.out.println("\n-------INKREMENTACJA");
 
         int a = 1, b = 2, c;
@@ -95,68 +100,66 @@ public class Main {
         System.out.println(++b); //zwiększy wartoś b o jeden i wydrukuje (inkrementacja predfixowa) //3
     }
 
-// -------- OPERATORY PORÓWNAWCZE I LOGICZNE
-    public static void operatory(){
+    // -------- OPERATORY PORÓWNAWCZE I LOGICZNE
+    public static void operatory() {
         System.out.println("\n-------OPERATORY PORÓWNAWCZE I LOGICZNE");
 
-        System.out.println(4==3);		//false - (sprawdzenie czy są równe - nieprawda) a=4, b=3
+        System.out.println(4 == 3);        //false - (sprawdzenie czy są równe - nieprawda) a=4, b=3
         System.out.println("ala".equals("kot"));//false - (sprawdzenie czy znaki lub stringi są równe - nieprawda) ala<>kot
-        System.out.println(4!=3);		//true - (sprawdzenie czy są różne - prawda) a=4, b=3
-        System.out.println(4>=3);		//true - (sprawdzenie czy a>=b - prawda) a=4, b=3
+        System.out.println(4 != 3);        //true - (sprawdzenie czy są różne - prawda) a=4, b=3
+        System.out.println(4 >= 3);        //true - (sprawdzenie czy a>=b - prawda) a=4, b=3
         System.out.println("\n");
-        System.out.println((4>=3)&&(4<=3));	//false - (PRAWDA and FAŁSZ) jeden z warunków = fałsz -> całe twierdzenie fałszywe
-        System.out.println((4>=3)||(4<=3));	//true - (PRAWDA and FAŁSZ) jeden z warunków = prawdziwy -> całe twierdzenie prawdziwe
+        System.out.println((4 >= 3) && (4 <= 3));    //false - (PRAWDA and FAŁSZ) jeden z warunków = fałsz -> całe twierdzenie fałszywe
+        System.out.println((4 >= 3) || (4 <= 3));    //true - (PRAWDA and FAŁSZ) jeden z warunków = prawdziwy -> całe twierdzenie prawdziwe
 
     }
 
-// -------- FUNKCJE MATEMATYCZNE
-    public static void mat(){
+    // -------- FUNKCJE MATEMATYCZNE
+    public static void mat() {
         System.out.println("\n-------FUNKCJE MATEMATYCZNE");
 
-        System.out.println("\n"+ Math.sqrt(9));	//Math.sqrt(double liczba) - funkcja matematyczna wyliczająca pierwiastek
-        System.out.println(Math.pow(2,3));	//Math.pow(double a, double b) - funkcja matematyczna podnosząca liczbę a do potęgi b (2 do 3 = 8)
-        System.out.println(Math.abs(-3));	//Math.abs(liczba) - funkcja matematyczna zwracająca wartośc bezwzględną (dla -3 = 3)
-        System.out.println(Math.PI);		//- funkcja matematyczna zwracająca wartośc liczby PI
-        System.out.println(Math.E);		//- funkcja matematyczna zwracająca wartośc liczby E
-        System.out.println(E);			//zadziała bez przedrostka Math. (wskazania pakietu) gdyż w pierwszej lini kodu dokonaliśmy importu statycznego tej biblioteki
+        System.out.println("\n" + Math.sqrt(9));    //Math.sqrt(double liczba) - funkcja matematyczna wyliczająca pierwiastek
+        System.out.println(Math.pow(2, 3));    //Math.pow(double a, double b) - funkcja matematyczna podnosząca liczbę a do potęgi b (2 do 3 = 8)
+        System.out.println(Math.abs(-3));    //Math.abs(liczba) - funkcja matematyczna zwracająca wartośc bezwzględną (dla -3 = 3)
+        System.out.println(Math.PI);        //- funkcja matematyczna zwracająca wartośc liczby PI
+        System.out.println(Math.E);        //- funkcja matematyczna zwracająca wartośc liczby E
+        System.out.println(E);            //zadziała bez przedrostka Math. (wskazania pakietu) gdyż w pierwszej lini kodu dokonaliśmy importu statycznego tej biblioteki
     }
 
-// -------- IF ELSE
-    public static void ifElse(){
+    // -------- IF ELSE
+    public static void ifElse() {
         System.out.println("\n-------IF ELSE");
 
-        double a1=4,b1=3;
+        double a1 = 4, b1 = 3;
 
-        if(a1<b1){
+        if (a1 < b1) {
             System.out.println("4<3");
-        }
-        else if (a1==b1){
+        } else if (a1 == b1) {
             System.out.println("4=3");
-        }
-        else {
+        } else {
             System.out.println("4>3");
         }
     }
 
-// -------- KONWERSJA TYPÓW DANYCH
-    public static void konwersja(){
+    // -------- KONWERSJA TYPÓW DANYCH
+    public static void konwersja() {
         System.out.println("\n-------KONWERSJA TYPÓW DANYCH");
 
         int AA = 5;
         double BB = 13.5;
-        double CC = BB/(double)AA;	//jawnie skonwertowalismy AA na podwójną precyzję (RZUTOWALISMY) - w tym konkretnym przyp java i tak by to zrobila automatycznie
-        System.out.println(CC);		//2.7
+        double CC = BB / (double) AA;    //jawnie skonwertowalismy AA na podwójną precyzję (RZUTOWALISMY) - w tym konkretnym przyp java i tak by to zrobila automatycznie
+        System.out.println(CC);        //2.7
     }
 
-// -------- ZAOKRĄGLENIE LICZB
-    public static void zaokr(){
+    // -------- ZAOKRĄGLENIE LICZB
+    public static void zaokr() {
         System.out.println("\n-------ZAOKRĄGLENIE LICZB");
 
-        System.out.println((double)Math.round((1.35)));		//1,0 - zaokrąglenie do liczby całkowitej
-        System.out.println((double)Math.round((1.35)*10)/10);		//1,4 - zaokrąglenie do 1 miejsca po przecinku
+        System.out.println((double) Math.round((1.35)));        //1,0 - zaokrąglenie do liczby całkowitej
+        System.out.println((double) Math.round((1.35) * 10) / 10);        //1,4 - zaokrąglenie do 1 miejsca po przecinku
     }
 
-// -------- SWITCH (CASE)
+    // -------- SWITCH (CASE)
     public static void switch_case() {
         System.out.println("\n-------SWITCH (CASE)");
 
@@ -177,24 +180,24 @@ public class Main {
 
     }
 
-// -------- WHILE, WHILE DO
+    // -------- WHILE, WHILE DO
     public static void while_while_do() {
         System.out.println("\n-------WHILE, WHILE_DO");
 
         int x = 0;      //while
-        while (x<3) {
+        while (x < 3) {
             x++;
             System.out.println("x= " + x);
         }
 
-        x=0;            //while do - wykona się przynajmniej raz
-        do{
+        x = 0;            //while do - wykona się przynajmniej raz
+        do {
             x++;
-            System.out.println("x= "+x);
-        } while (x<3);
+            System.out.println("x= " + x);
+        } while (x < 3);
     }
 
-// -------- FOR, BREAK i CONTINUE
+    // -------- FOR, BREAK i CONTINUE
     public static void petla_for() {
         System.out.println("\n-------PĘTLA FOR, BREAK I CONTINUE");
 
@@ -212,19 +215,19 @@ public class Main {
             System.out.println("Wartość x = " + x); // 2, 4, 6
         }
 
-        int[] tablica = {1,2,3};
-        for (int i: tablica) { //pętla for po elementach talicy - deklaruję zmienną która jest elementem tablicy
+        int[] tablica = {1, 2, 3};
+        for (int i : tablica) { //pętla for po elementach talicy - deklaruję zmienną która jest elementem tablicy
             System.out.println(i);
         }
     }
 
-// -------- RANDOM
+    // -------- RANDOM
     public static void rndm() {
         System.out.println("\n-------RANDOM");
 
         Random r = new Random();
         //int rnd = r.nextInt(5);               //generowanie z obiektu r liczby całkowitej od zera do wartości mniejszej niż podana w nawiasie
-        int rnd = r.nextInt(5)+1;       //wygeneruje liczbę od 1 do liczby w nawiasie
+        int rnd = r.nextInt(5) + 1;       //wygeneruje liczbę od 1 do liczby w nawiasie
         System.out.println(rnd);
 
         double zmiennaLiczba = (Math.random()); //generowanie liczby losowej <0 (kilka miejsc po przecinku) (można zrezygmowac z przedrostka Math gdyż na początku zaimportowaliśmy pakiet java.lang.Math.*)
@@ -232,16 +235,16 @@ public class Main {
         //jeżeli chcemy uzyskac z tego liczbę całkowitą z przedziału mnożymy wynik przez (koniec-początek)
         // a na końcu dodajemy początek przedziału. Całoś wyniku castujemy do integera (odcinamy miejsca po przecinku)
         //np: liczba całkowita z przedziału 2-10
-        zmiennaLiczba = (Math.random() * (10-2) )+2;
-        System.out.println((int)zmiennaLiczba);
+        zmiennaLiczba = (Math.random() * (10 - 2)) + 2;
+        System.out.println((int) zmiennaLiczba);
     }
 
-// -------- SCANNER
+    // -------- SCANNER
     public static void scnr() throws FileNotFoundException {
         System.out.println("\n-------SCANER");
 
         Scanner odczyt = new Scanner(System.in);        //skaner czytający z klawiatury
-        while(!odczyt.hasNextInt()){
+        while (!odczyt.hasNextInt()) {
             System.out.println("Podaj liczbę całkowitą");
             odczyt.nextLine();
         }
@@ -249,29 +252,29 @@ public class Main {
 
         String text = "51 2 14 7";
         Scanner scanner = new Scanner(text);            //skaner czytający ze zmiennej
-        while(scanner.hasNextInt()) {
+        while (scanner.hasNextInt()) {
             int i = scanner.nextInt();
             System.out.println(i); // 51 2 14 7
         }
 
         File file = new File("data/odczyt.txt");  //skaner czytający z pliku
         Scanner scanner1 = new Scanner(file);
-        while(scanner1.hasNextLine()) {
+        while (scanner1.hasNextLine()) {
             String string = scanner1.nextLine();
-            System. out.println(string);
+            System.out.println(string);
         }
     }
 
-// -------- BIGINTEGER, BIGDECIMAL
+    // -------- BIGINTEGER, BIGDECIMAL
     public static void bintBdeci() {
         System.out.println("\n-------BIGINTEGER AND BIG DECIMAL");
 
         BigDecimal a = new BigDecimal("1234567890.987654321");
-        BigDecimal b = BigDecimal. valueOf(9234567890.987654321);
+        BigDecimal b = BigDecimal.valueOf(9234567890.987654321);
         BigDecimal c = b.subtract(a).negate();
         BigDecimal d = c.abs();
-        System. out.println(c); // -7999999999.999999679
-        System. out.println(d); // 7999999999.999999679
+        System.out.println(c); // -7999999999.999999679
+        System.out.println(d); // 7999999999.999999679
     }
 
     // -------- CHARACTER
@@ -282,8 +285,8 @@ public class Main {
         Character c2 = 'a'; // boxing ("duży character")
         char c3 = c2; // unboxing
         Character c4 = new Character('a');
-        System. out.println(Character. isDigit(c4)); // false
-        System. out.println(Character. isLowerCase(c4)); // true
+        System.out.println(Character.isDigit(c4)); // false
+        System.out.println(Character.isLowerCase(c4)); // true
     }
 
     // -------- ARRAY TABLICA
@@ -298,15 +301,15 @@ public class Main {
 
 
         for (int i = 0; i < 3; i++) {       //prosta pętla po tablicy
-            System. out.println(array2[i]);
+            System.out.println(array2[i]);
         }
 
         for (char c : array2) {             // deklaruję zmienna c takiego samego typu jak dane w tablicy i mówię że przypisuje do niej kolejno obiekty z tablicy
-            System. out.println(c);
+            System.out.println(c);
         }
     }
 
-// -------- LISTY
+    // -------- LISTY
     public static void arraylist() {
         System.out.println("\n-------ARRAY LIST");
 
@@ -314,15 +317,15 @@ public class Main {
         list1.add(4.5);
         list1.add("aaa");
         list1.add(false);
-        System. out.println(list1);         //cała zawartosc listy
-        System. out.println(list1.get(1));  //zawartośc konkretnej pozycji (uwaga po usunieciu pozycji kolejne idą do góry i w miejsce usuniętej mamy kolejną)
+        System.out.println(list1);         //cała zawartosc listy
+        System.out.println(list1.get(1));  //zawartośc konkretnej pozycji (uwaga po usunieciu pozycji kolejne idą do góry i w miejsce usuniętej mamy kolejną)
 
         for (int i = 0; i < list1.size(); i++) {
-            System. out.println(list1.get(i));
+            System.out.println(list1.get(i));
         }
 
         for (java.lang.Object c : list1) {  //iteracja jak w przyp tabeli, tyle ze zmienna zamiast typu jest obiektem (w liscie sa rozne typy i nie moge zadeklarowac jednego)
-            System. out.println(c);
+            System.out.println(c);
         }
 
         //przykładowe metody
@@ -336,12 +339,12 @@ public class Main {
         listaIntegerow.add(1);
         listaIntegerow.add(2);
         listaIntegerow.add(3);
-        for(int x : listaIntegerow){
+        for (int x : listaIntegerow) {
             System.out.println(x);
         }
     }
 
-// -------- STRING BUILDER
+    // -------- STRING BUILDER
     public static void sb() {
         System.out.println("\n-------STRING BUILDER");
 
@@ -349,7 +352,7 @@ public class Main {
         String txt2 = new String("napis2");
 
         //łączenie Stringów
-        System.out.println(txt1+" "+txt2);
+        System.out.println(txt1 + " " + txt2);
         System.out.println(txt1.concat(" ").concat(txt2)); //metoda łączenia wywołana 2x !
 
         //String jest "niezmienny" i za każdym jego powstaniem trafia do StringPool'a
@@ -359,12 +362,13 @@ public class Main {
         StringBuilder alph = new StringBuilder();
         for (char c = 'a'; c <= 'z'; c++) { //możliwa iteracja bo to znaki unicode - a=97, b=98 ...
             alph.append(c);
-        }System.out.println(alph);
+        }
+        System.out.println(alph);
 
-        System. out.println(alph.append(alph.length()).reverse()); //przykładowe metody SB
+        System.out.println(alph.append(alph.length()).reverse()); //przykładowe metody SB
     }
 
-// -------- DATA I CZAS
+    // -------- DATA I CZAS
     public static void dateTime() {
         System.out.println("\n-------DATA I CZAS");
 
@@ -376,17 +380,17 @@ public class Main {
         System.out.println(ft.format(date));
 
         //parsowanie
-        SimpleDateFormat ft1 = new SimpleDateFormat ("yyyy-MM-dd");
+        SimpleDateFormat ft1 = new SimpleDateFormat("yyyy-MM-dd");
         Date date1 = null;
         try {
             date1 = ft1.parse("2017-12-24"); //parsowanie ze stringa do daty wg formatu zdefiniowanego w SimpleDateFormat
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        System. out.println(date1);
+        System.out.println(date1);
     }
 
-// -------- PATTERN I MATCHER - wyrażenia regularne
+    // -------- PATTERN I MATCHER - wyrażenia regularne
     public static void pattMatch() {
         System.out.println("\n-------PATTERN I MATCHER - wyrażenia regularne");
 
@@ -403,13 +407,92 @@ public class Main {
     public static void fileWriter() throws IOException {
         System.out.println("\n-------FILE WRITER");
 
-        FileWriter fw = new FileWriter("data/zapis.txt",true);
+        FileWriter fw = new FileWriter("data/zapis.txt", true);
         fw.write("nowa linia " + new Date() + "\n");
         fw.close();
+
+        System.out.println("Dopisałem nową linie do pliku zapis.txt");
     }
 
+    //-------- MODYFIKATORY DOSTĘPU
+    public static void modyfikatoryDostepu() {
+        System.out.println("\n-------MODYFIKATORY DOSTĘPU");
+    /*
+    dla metod i pól (zmiennych) mogą być:
+    public - nieograniczony dostęp do metod i zmiennych
+    private - dostęp tylko w ramach tej samej klasy
+    default (brak modyfikatora) - dostęp w ramach tego samego pakietu
+    protected - dostęp w ramach tego samego pakietu i dla klas dziedziczących
+    */
 
+        System.out.println("zmienna typu protected z innej klasy w innym pakiecie: " + New.protInt);
+        //mogę użyć zmiennej typu protected z innego pakietu po tym jak pakiet zaimportowałem
+        //oraz wskazałem że moja klasa Main dziedziczy po klasie z innego pakietu
+        //Nota bene zmienna protected w innym pakiecie MUSIALA BYC STATIC
+    }
 
+    //Klasy mogą być tylko:
+    // public - dostępne bez ograniczeń
+    // default(bez modyfikatora) - dostępne tylko dla klas w tym samym pakiecie
+    //chyba że jest to klasa wewnętrzna (klasa w klasie) - wówczas mogą być jeszcze protected i private
+    //przykład poniżej
+    //-------- KLASA W KLASIE
+    private class test {
+        // comment
+    }
+
+    //-------- POLA I METODY STATYCZNE
+    public static void stat() {
+        System.out.println("\n-------POLA I METODY STATYCZNE");
+
+        Old.int1 = 2; //zmieniam wart z 1 na 2
+        System.out.println(Old.int1); //wynik 2
+
+        //niezależnie ile utworzę obiektów klasy Old, ze wzgl na to że zmienna jest statyczna to w każdym
+        //obiekcie nie będzie tworzona, lecz "pozostanie w klasie" i za każdym razem będzie np. nadpisywana
+        //przykład:
+        Old obiekt1 = new Old();
+        Old obiekt2 = new Old();
+        obiekt1.int1 = 10;
+        obiekt2.int1 = 20;
+
+        System.out.println(obiekt1.int1); //wynik 20 bo zmienna int nie jest w obiekcie,
+        // lecz w klasie i w ostatniej operacji została do niej przypisana wartość 20
+        System.out.println(obiekt2.int1); // wynik 20
+        System.out.println(Old.int1); //wynik 20
+
+        //w mojej statycznej metodzie  stat() nie moge użyć zmiennych i metod niestatycznych
+        //nie skompiluje sie:
+        //System.out.println(Old.int2);     //zmienna niestatyczna
+        //System.out.println(getString());  //metoda niestatyczna
+        Old obiekt3 = new Old();
+        System.out.println(obiekt3.int2);           //skompiluje się !! - mamy już obiekt
+        System.out.println(obiekt3.getString());    //skompiluje się !! - mamy już obiekt
+    }
+
+    //-------- PRZEKAZYWANIE PARAMETRÓW DO METOD - następuje przez wartość
+
+    public static void passParam() {
+        System.out.println("\n-------PRZEKAZYWANIE PARAMETRÓW DO METOD");
+
+        int a = 5;
+        change1(a);             //wywołanie metody i przekazanie do niej wartości 5
+        System.out.println(a);  //wydrukuje 5
+    }
+
+    static void change1(int a) { //Tworzona jest kopia parametru do zmiennej lokalnej metody
+        a = 10;
+    }
+
+    public static void tmp() {
+        StringBuilder a = new StringBuilder("abc");
+        change(a);
+        System.out.println(a); //wydrukuje abc123 - nastąpiła zmiana stanu obiektu
+    }
+
+    static void change(StringBuilder a) {
+        a.append("123");
+    }
 }
 
 
