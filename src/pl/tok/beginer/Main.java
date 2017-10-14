@@ -44,8 +44,10 @@ public class Main extends New {     //klasa Main dziedziczy po klasie New, musz�
         stat();
         passParam();
         tmp();
+        kons();                         //konstruktory
+        getSet();                       // gettery i settery
         //dodac obsługę błędów
-        //konstruktory
+
     }
 
     // -------- DRUKOWANIE NA EKAN
@@ -493,6 +495,41 @@ public class Main extends New {     //klasa Main dziedziczy po klasie New, musz�
     static void change(StringBuilder a) {
         a.append("123");
     }
+
+//----------------------------------------------------------------------------------------------------------------------
+    //-------- KONSTRUKTORY
+    public static void kons() {
+
+        Konstr konstr = new Konstr("\n-------- KONSTRUKTORY");  //konstuktor jest wywoływany w momencie tworzenia nowego obiektu
+        // i przypisuje do jego pól (zmiennych) wartości
+
+        konstr.name = "bla bla bla" + konstr.lang;      //nie ma hermetyzacji, pole name jest public i każdy może je zmieniac - poniżej opisano geterry i settery które to zmieniają
+        System.out.println(konstr.name);
+
+        Konstr konstr1 = new Konstr(10, "Jan");
+        System.out.println(konstr1.name + " lat "+konstr1.i);
+
+        Konstr konstr2 = new Konstr(5);
+        System.out.println(konstr2.name + " lat "+konstr2.i);
+    }
+
+    //-------- GETTERY I SETTERY
+
+    // ułatwiają hermetyzację, możemy ustawic pola w klasie do której sie odwołujemy na "private"
+    // i zezwolic na ich maniepulację tylko za pomocą metod get i set
+
+    public static void getSet() {
+        System.out.println("\n------- GETTERY I SETTERY");
+
+        Konstr konstr = new Konstr(10, "Jan");
+        konstr.setName("Tomek");
+        konstr.setCzy(false);
+
+        System.out.println(konstr.getName() + " czy niski = " +konstr.isCzy());
+    }
+
+
+
 }
 
 
