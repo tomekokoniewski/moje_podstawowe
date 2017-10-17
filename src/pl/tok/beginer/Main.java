@@ -141,7 +141,13 @@ public class Main extends New {     //klasa Main dziedziczy po klasie New, musz�
         } else {
             System.out.println("4>3");
         }
+
+        //operator trójargumentowy
+        String wynik;
+        wynik=a1<b1? "4<3": "4>3";		//zmienna = warunek ? wartosc_jak_prawda  : wartosc_jak_falsz;
+        System.out.println(wynik);
     }
+
 
     // -------- KONWERSJA TYPÓW DANYCH
     public static void konwersja() {
