@@ -267,9 +267,12 @@ public class Main extends New {     //klasa Main dziedziczy po klasie New, muszÄ
 
         File file = new File("data/odczyt.txt");  //skaner czytajÄ…cy z pliku
         Scanner scanner1 = new Scanner(file);
+
         while (scanner1.hasNextLine()) {
             String string = scanner1.nextLine();
+            String linia[] = string.split(","); //podzielenie od razu lini na pola (kolejne elementy tablicy)
             System.out.println(string);
+                System.out.println(linia[0] + " " + linia[1]+ " " + linia[2]+ " " + linia[3]+ " " + linia[4]+ " " + linia[5]+ " " + linia[6]);
         }
     }
 
