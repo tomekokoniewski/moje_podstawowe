@@ -46,6 +46,8 @@ public class Main extends New {     //klasa Main dziedziczy po klasie New, musz�
         tmp();
         kons();                         //konstruktory
         getSet();                       // gettery i settery
+        getSetHerm();
+        klasaNiezmienna();
         //dodac obsługę błędów
 
     }
@@ -537,6 +539,27 @@ public class Main extends New {     //klasa Main dziedziczy po klasie New, musz�
         System.out.println(konstr.getName() + " czy niski = " +konstr.isCzy());
     }
 
+    public  static void getSetHerm(){
+        System.out.println("\n------ GETERY I SETTERY PRZYKLAD HERMETYZACJI");
+
+        //nie można ustawić bezpośrednio wartości pola adres w klasie KonstrHerm (jest typu private)
+        //możemy podać do parametrów settera ulice i nr domu, a setter w KonstrHerm ustawi pole adres
+        //później możemy pobrać getterem wartość pola adres
+        KonstrHerm konstrHerm = new KonstrHerm();
+        konstrHerm.setAdres("Młodych","4");
+        System.out.println("Adres: "+konstrHerm.getAdres());
+    }
+
+    public  static void klasaNiezmienna(){
+        System.out.println("\n------ KLASA NIEZMIENNA");
+
+        KlasaNiezmienna klasaNiezmienna = new KlasaNiezmienna(true);
+        //po utworzeniu obiektu klasy "KlasaNiezmienna" nie moge zmienić wartości pola czyNowy,
+        //nie ma settera, a pole jest private - nie ma do niego dostępu z zewnątrz,
+        //mogę jedynie pobrać jego wartość getterem
+        System.out.println(klasaNiezmienna.isCzyNowy());
+
+        }
 
 
 }

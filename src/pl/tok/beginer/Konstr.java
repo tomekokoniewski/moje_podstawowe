@@ -3,7 +3,7 @@ package pl.tok.beginer;
 class Konstr {                         //dostęp za pomocą modyfikatora default - w ramach tego samego pakietu
 
     public String name;                //deklarujemy pole (zmienną) klasy
-    public final String lang;          //możemy także zadeklarowa stałą klasy
+    public final String lang;          //możemy także zadeklarowac stałą klasy
     public int i;
     public boolean czy;
 
@@ -14,7 +14,6 @@ class Konstr {                         //dostęp za pomocą modyfikatora default
         this.lang = text.substring(0, 5);    //lub stałych klasy
 
         System.out.println(name);
-
     }
 
     public Konstr(int i, String s1) {    //konstruktory można przeładowac (utworzyc kilka o takiej samej nazwie z innymi typami parametrów)
