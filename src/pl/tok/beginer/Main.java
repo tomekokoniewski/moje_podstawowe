@@ -51,7 +51,8 @@ public class Main extends New {     //klasa Main dziedziczy po klasie New, musz�
         klasaNiezmienna();
         dziedziczenie();
         dziedzNadpisywanie();
-
+        klasaAbstr();
+        interfejs();
     }
 
     // -------- DRUKOWANIE NA EKAN
@@ -589,6 +590,48 @@ public class Main extends New {     //klasa Main dziedziczy po klasie New, musz�
         System.out.println(K1.plec);
         System.out.println(K2.plec);
     }
+
+    // ------- KLASA ABSTRAKCYJNA
+    public static void klasaAbstr() {
+        System.out.println("\n------ KLASA ABSTRAKCYJNA");
+
+        KlasaAbstrDziedziczaca.test();
+
+    //Klasa abstrakcyjna ma  przynajmniej jedną metodę abstrakcyjną,
+    //klasa dziedzicząca po klasie abstrakcyjnej musi nadpisywać metodę abstrakcyjną z klasy abstrakcyjnej
+    }
+
+    // ------- INTERFEJS
+    public static void interfejs() {
+        System.out.println("\n------ INTERFEJS");
+
+        InterfaceImplementation osoba = new InterfaceImplementation("Jan",20);
+        System.out.println("Osoba: "+osoba.getName()+" lat "+osoba.getWiek());
+
+    //Interfejs to element abstrakcyjny - nie mozna tworzyć dla niego obiektow
+
+    //Interfejs zawiera jedynie listę metod abstrakcyjnych (bez
+    //implementacji), które klasa implementująca musi posiadać
+
+    //Interfejs może też zawierać zmienne do której klasa może się odwołać (tak naprawdę stałe)
+    //– final jest dla niej narzucone
+
+    /*Klasy mogą implementować wiele interfejsów
+        public class Driver implements EmployeeInterface, HumanInterface {
+        // ...
+        }
+    Uwaga: błąd kompilacji gdy, interfejsy mają taką samą metodę z
+    identycznymi parametrami ale z innym typem zwracanym
+    */
+
+    /*Analogicznie jak w przypadku klas, interfejs może dziedziczyć po innym interfejsie (lub po kilku)
+        public interface EmployeeInterface extends HumanInterface, ...{
+            final String TABLE_NAME = "worker_sql";
+            BigDecimal getIncome ();
+        }
+    */
+    }
+
 
 
 }
