@@ -414,6 +414,12 @@ public class Main extends New {     //klasa Main dziedziczy po klasie New, musz�
             System.out.println(matcher.group(1)); // 1234
             System.out.println(matcher.group(2)); // 5324
         }
+     //można także podzielic stringi nie tylko za pomoca patterna i matchera, - można użyc .split na Stringu
+
+        String[] elementyWlini = text.split("/");
+        for (int i=0; i<elementyWlini.length; i++ ){
+            System.out.println(elementyWlini[i]);
+        }
     }
 
     // -------- FILE WRITER - wyrażenia regularne
