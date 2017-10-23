@@ -53,6 +53,10 @@ public class Main extends New {     //klasa Main dziedziczy po klasie New, musz�
         dziedzNadpisywanie();
         klasaAbstr();
         interfejs();
+        polimorfizm();
+        pmfzmPrzyklad();
+        porownania();
+
     }
 
     // -------- DRUKOWANIE NA EKAN
@@ -572,7 +576,7 @@ public class Main extends New {     //klasa Main dziedziczy po klasie New, musz�
     // ------- DZIEDZICZENIE, PRZEKAZANIE PARAMETRU Z KLASY DZIEDZICZĄCEJ DO KLASY NADRZĘDNEJ
     public static void dziedziczenie(){
         System.out.println("\n------ DZIEDZICZENIE");
-        KlasaDziedziczaca.test(); //1. wywołuję metode test w KD
+        KlasaDziedziczaca.test(); //1. wywołuję metode porownania w KD
 
     //    Gdy w klasie nadrzędnej istnieje konstruktor z parametrem to
     //    konstruktor klasy podrzędnej musi go wywołać – super()
@@ -632,7 +636,60 @@ public class Main extends New {     //klasa Main dziedziczy po klasie New, musz�
     */
     }
 
+    // ------- POLIMORFIZM
+    public static void polimorfizm() {
+        System.out.println("\n------ POLIMORFIZM");
 
+        Podrzedna.test();
+
+    //Polimorfizm to zdolność przyjmowania przez obiekt formy klasy nadrzędnej
+    //jeżeli mam klase A i dziedziczącą po niej B to "standardowo" tworzę obiekt
+    // B nazwaObiektu = new B; //-obiekt klasy B typu B
+    // wykorzystując polimorfizm mogę utworzyć obiekt klasy B typu A (po którym dziedziczy B)
+    // A nazwaObiektu = new B;
+    }
+
+    //----- PRZYKŁAD POLIFORMIZMU ------
+    public static void pmfzmPrzyklad(){
+        PolimorfizmDirector director = new PolimorfizmDirector();
+        PolimorfizmDriver driver = new PolimorfizmDriver();
+
+    // metoda PolimorfizmBusinessCard może przyjmować obiekty klas "director" i "driver" gdyż obie
+    // implementują ten sam interfejs
+
+        String directorCard = PolimorfizmBusinessCard.getBusinessCard(director);
+        String driverCard = PolimorfizmBusinessCard.getBusinessCard(driver);
+        System.out.println(directorCard);
+        System.out.println(driverCard);
+    }
+
+    // ------- PORÓWNANIA OBIEKTÓW
+    public static void porownania(){
+    System.out.println("\n------ PORÓWNANIA OBIEKTÓW");
+
+    StringBuilder stringBuilder1 = new StringBuilder("abc");
+    StringBuilder stringBuilder2 = new StringBuilder("abc");
+    System.out.println(stringBuilder1.equals(stringBuilder2)); //false, to dwa różne obiekty
+    //(equals sprawdza w tym wypadku odwołania do obiektów), mają take dwa inne hashCode (identyfikatory obiektów)
+    System.out.println(stringBuilder1==stringBuilder2); //false, porównywane są reference do obiektow a nie wartości
+    System.out.println(stringBuilder1.hashCode()+" "+stringBuilder2.hashCode()); // dwa różne hashCode
+
+    //Niektóre obiekty mają nadpisane metody equals i hashCode tak aby można je było łatwo porównywać
+    System.out.println(new Integer(3).equals(new Integer(3) )); //true
+    System.out.println(new Integer(3).hashCode()+" "+new Integer(3).hashCode()); //3 i 3
+
+    //Aby móc sprawdzac czy obiekty są sobie równe należy nadpisać w ich klasach metody
+    // equals oraz hasCode (w Intelij są feneratory metod dostępne pod alt+Insert
+    }
+
+    // ------- WYJĄTKI
+    public static void wyjatki(){
+        System.out.println("\n------ WYJĄTKI");
+        // obsługa przez "try/catch", przekazanie do klasy nadrzędnej przez "throws"
+
+        
+
+    }
 
 }
 
