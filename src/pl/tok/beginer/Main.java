@@ -26,6 +26,7 @@ public class Main extends New {     //klasa Main dziedziczy po klasie New, musz�
         operatory();
         mat();
         ifElse();
+        konwersja();
         zaokr();
         switch_case();
         while_while_do();
@@ -43,12 +44,13 @@ public class Main extends New {     //klasa Main dziedziczy po klasie New, musz�
         modyfikatoryDostepu();
         stat();
         passParam();
-        tmp();
-        kons();                         //konstruktory
-        getSet();                       // gettery i settery
+        passParam1();
+        kons();
+        getSet();
         getSetHerm();
         klasaNiezmienna();
-        //dodac obsługę błędów
+        dziedziczenie();
+        dziedzNadpisywanie();
 
     }
 
@@ -146,10 +148,9 @@ public class Main extends New {     //klasa Main dziedziczy po klasie New, musz�
 
         //operator trójargumentowy
         String wynik;
-        wynik=a1<b1? "4<3": "4>3";		//zmienna = warunek ? wartosc_jak_prawda  : wartosc_jak_falsz;
+        wynik = a1 < b1 ? "4<3" : "4>3";        //zmienna = warunek ? wartosc_jak_prawda  : wartosc_jak_falsz;
         System.out.println(wynik);
     }
-
 
     // -------- KONWERSJA TYPÓW DANYCH
     public static void konwersja() {
@@ -274,7 +275,7 @@ public class Main extends New {     //klasa Main dziedziczy po klasie New, musz�
             String string = scanner1.nextLine();
             String linia[] = string.split(","); //podzielenie od razu lini na pola (kolejne elementy tablicy)
             System.out.println(string);
-                System.out.println(linia[0] + " " + linia[1]+ " " + linia[2]+ " " + linia[3]+ " " + linia[4]+ " " + linia[5]+ " " + linia[6]);
+            System.out.println(linia[0] + " " + linia[1] + " " + linia[2] + " " + linia[3] + " " + linia[4] + " " + linia[5] + " " + linia[6]);
         }
     }
 
@@ -414,10 +415,10 @@ public class Main extends New {     //klasa Main dziedziczy po klasie New, musz�
             System.out.println(matcher.group(1)); // 1234
             System.out.println(matcher.group(2)); // 5324
         }
-     //można także podzielic stringi nie tylko za pomoca patterna i matchera, - można użyc .split na Stringu
+        //można także podzielic stringi nie tylko za pomoca patterna i matchera, - można użyc .split na Stringu
 
         String[] elementyWlini = text.split("/");
-        for (int i=0; i<elementyWlini.length; i++ ){
+        for (int i = 0; i < elementyWlini.length; i++) {
             System.out.println(elementyWlini[i]);
         }
     }
@@ -456,7 +457,7 @@ public class Main extends New {     //klasa Main dziedziczy po klasie New, musz�
     //chyba że jest to klasa wewnętrzna (klasa w klasie) - wówczas mogą być jeszcze protected i private
     //przykład poniżej
     //-------- KLASA W KLASIE
-    private class test {
+    public class test {
         // comment
     }
 
@@ -501,9 +502,10 @@ public class Main extends New {     //klasa Main dziedziczy po klasie New, musz�
 
     static void change1(int a) { //Tworzona jest kopia parametru do zmiennej lokalnej metody
         a = 10;
+        System.out.println(a);   //wydrukuje 10
     }
 
-    public static void tmp() {
+    public static void passParam1() {
         StringBuilder a = new StringBuilder("abc");
         change(a);
         System.out.println(a); //wydrukuje abc123 - nastąpiła zmiana stanu obiektu
@@ -513,7 +515,7 @@ public class Main extends New {     //klasa Main dziedziczy po klasie New, musz�
         a.append("123");
     }
 
-//----------------------------------------------------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------------------------------------------
     //-------- KONSTRUKTORY
     public static void kons() {
 
@@ -524,39 +526,39 @@ public class Main extends New {     //klasa Main dziedziczy po klasie New, musz�
         System.out.println(konstr.name);
 
         Konstr konstr1 = new Konstr(10, "Jan");
-        System.out.println(konstr1.name + " lat "+konstr1.i);
+        System.out.println(konstr1.name + " lat " + konstr1.i);
 
         Konstr konstr2 = new Konstr(5);
-        System.out.println(konstr2.name + " lat "+konstr2.i);
+        System.out.println(konstr2.name + " lat " + konstr2.i);
     }
 
     //-------- GETTERY I SETTERY
-
-    // ułatwiają hermetyzację, możemy ustawic pola w klasie do której sie odwołujemy na "private"
-    // i zezwolic na ich maniepulację tylko za pomocą metod get i set
-
     public static void getSet() {
         System.out.println("\n------- GETTERY I SETTERY");
+        // ułatwiają hermetyzację, możemy ustawic pola w klasie do której sie odwołujemy na "private"
+        // i zezwolic na ich maniepulację tylko za pomocą metod get i set
+
 
         Konstr konstr = new Konstr(10, "Jan");
         konstr.setName("Tomek");
         konstr.setCzy(false);
 
-        System.out.println(konstr.getName() + " czy niski = " +konstr.isCzy());
+        System.out.println(konstr.getName() + " czy niski = " + konstr.isCzy());
     }
 
-    public  static void getSetHerm(){
+    public static void getSetHerm() {
         System.out.println("\n------ GETERY I SETTERY PRZYKLAD HERMETYZACJI");
 
         //nie można ustawić bezpośrednio wartości pola adres w klasie KonstrHerm (jest typu private)
         //możemy podać do parametrów settera ulice i nr domu, a setter w KonstrHerm ustawi pole adres
         //później możemy pobrać getterem wartość pola adres
         KonstrHerm konstrHerm = new KonstrHerm();
-        konstrHerm.setAdres("Młodych","4");
-        System.out.println("Adres: "+konstrHerm.getAdres());
+        konstrHerm.setAdres("Młodych", "4");
+        System.out.println("Adres: " + konstrHerm.getAdres());
     }
 
-    public  static void klasaNiezmienna(){
+    //-------- KLASA NIEZMIENNA
+    public static void klasaNiezmienna() {
         System.out.println("\n------ KLASA NIEZMIENNA");
 
         KlasaNiezmienna klasaNiezmienna = new KlasaNiezmienna(true);
@@ -564,12 +566,32 @@ public class Main extends New {     //klasa Main dziedziczy po klasie New, musz�
         //nie ma settera, a pole jest private - nie ma do niego dostępu z zewnątrz,
         //mogę jedynie pobrać jego wartość getterem
         System.out.println(klasaNiezmienna.isCzyNowy());
+    }
 
-        }
+    // ------- DZIEDZICZENIE, PRZEKAZANIE PARAMETRU Z KLASY DZIEDZICZĄCEJ DO KLASY NADRZĘDNEJ
+    public static void dziedziczenie(){
+        System.out.println("\n------ DZIEDZICZENIE");
+        KlasaDziedziczaca.test(); //1. wywołuję metode test w KD
+
+    //    Gdy w klasie nadrzędnej istnieje konstruktor z parametrem to
+    //    konstruktor klasy podrzędnej musi go wywołać – super()
+    //    Instrukcja super() musi być zawsze w pierwszej linii konstruktora
+    }
+
+    // ------- DZIEDZICZENIE - NADPISYWANIE METOD
+    public static void dziedzNadpisywanie() {
+        System.out.println("\n------ DZIEDZICZENIE - NADPISYWANIE METOD");
+
+        K2.test();
+
+        //zarówno w K1 jak i w K2 mamy pole "plec". W K2 dziedziczącej po K1 jej zadeklarowanie nie nadpisuje K1.plec, lecz "ukrywa"
+        // ją z poziomu K2, chyba że jawnie wskażemy, że chcemu plec z K1
+        System.out.println(K1.plec);
+        System.out.println(K2.plec);
+    }
 
 
 }
-
 
 
 
