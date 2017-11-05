@@ -1,0 +1,24 @@
+Duplikacja linii - Ctrl + D
+Usunięcie linii - Ctrl + Y / Shift + Delete
+Przenoszenie linijki/zaznaczenia -Ctrl + Shift + Up/Down
+Komentarze - Ctrl + / lub Ctrl + Shift + /
+Autouzupełnianie - Ctrl + Spacja
+Generowanie kodu - Alt + Insert
+Implementacja metod - Ctrl + I
+Formatowanie kodu - Ctrl + Alt + L
+Przełączanie między zakładkami - Ctrl + TAB
+Szukanie + opcje szukania - Ctrl + F
+Szukanie w projekcie - Ctrl + Shift + F
+"Szukanie wszędzie" - Shift Shift
+Find Action - Ctrl + Shift + A
+Znajdowanie wystąpień - Alt + F7
+Refaktoring:
+	Zmiana nazwy - Shift + F6
+	Bezpieczne usuwanie - Alt + Delete
+Chowanie aktywnego panelu - Shift + Esc
+Wielokursor:
+	Alt + Shift + lewy klik
+	Alt + pionowe przeciągnięcie myszą
+	2 x Ctrl -> strzałki
+
+

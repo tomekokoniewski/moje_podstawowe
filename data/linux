@@ -1,0 +1,67 @@
+Narzędzia programisty
+
+---------
+Struktura katalogów:
+/ <- root(korzeń systemu)
+/home <- katalogi domowe użytkowników
+/home/kursant <- katalog domowy użytkownika kursant(inaczej ~)
+/media <- pendrive'y, dyski zewnętrzne, podłączone telefony
+/opt <- "dodatkowe" programy
+/etc <- pliki konfiguracyjne programów
+
+---------
+Polecenia systemowe:
+ps - aktualnie uruchomione procesy, -a (użytkownia na wszystkich sesjach) -A (wszystkie procesy działające na serwerze), -u tomek (procesy użytkownia)
+kill - kończy proces (kill 1221 zamyka proces o PID= 1221 który możemy otrzymac przez ps_
+man - pliki pomocy (trzeba wcześniej zainstalowac man np sudo apt-get man) man ls - da plik pomocy do polecenia ls
+
+---------
+Poruszanie się po katalogach:
+ls - wylistowanie zawartości katalogu, ls -l (ze szczegółami), ls -a (z plikami ukrytymi), ll (ze szczegółami i plikami ukrytymi)
+cd - przejście do katalogu np. cd test, cd .. (katalog wyżej)
+pwd - info w jakim jesteśmy katalogu
+
+---------
+Operacje na plikach i katalogach:
+touch - tworzenie pustego pliku, touch 1.txt utworzy plik 1.txt
+rm - usunięcie pliku, rm 1.txt usunie plik 1.txt
+mkdir - tworzenie katalogu np. mkdir test
+rmdir - usunięcie katalogu np. rm test
+cp - kopiuje plik, cp 1.txt 2.txt skopiuje plik z 1 do 2
+mv - zmienia nazwę/ przenosi plik, mv 1.txt 3.txt (zmieni nazwę pliku z 1 na 3), sudo mv 3.txt / (przeniesie plik z bieżącego kat do kat głównego)
+cat - wyświetla zawartośc pliku, cat 1.txt (wyświetli zawartośc pliku 1.txt), -b (z numeracją wierszy)
+head - wyświetlenie zawartości pliku (standardowo pierwsze 10 lini), head -n 3 1.txt (wyświetli pierwsze 3 linie pliku)
+tail - wyświetla ostatnie 10 lini zawartości pliku, tail -n 1.txt (wyświetli ostatnie 3 linie)
+
+---------
+Szukanie plików na dysku:
+find ./ -iname "*nazwa pliku" - znajdź zaczynając od katalogu root (można też np "./etc" w kataogu), "-iname" - ignorując wielkoś znaków,
+"*.pdf" - pliki zawierające
+
+---------
+sudo - umożliwia wykonanie polecenia jako root, np sudo ls /root (wylistowanie katalogu roota które nie jest możliwe dla zwykłego usera)
+sudo -i przełączenie na konto roota, wyjście z konta roota Ctrl+D
+
+---------
+Instalowanie aplikacji: (wymagane uprawnienia sudo)
+sudo apt-get update (zaktualizowanie listy aplikacji/paczek dostępnych)
+sudo apt-get install mc (zainstalowanie programu - mc)
+sudo apt-get remove mc (odinstalowanie programu)
+--
+instalowanie z paczek .deb
+http://pkgs.org - przy ściąganiu paczki z internetu możemu od razu wskazac aby po ściągnięciu paczka była zainstalowana za pomocą "Software install"
+można także zainstalowac za pomocą terminalia używając polecenia:
+sudo dpkg -i ściągnięty_plik.deb
+--
+instalowanie paczek nie będących z centrum oprogramowania ubuntu:
+sudo add-apt-repository ppa:nazwa_dewelopera/nazwa_ppa (skrypt dodający pakiet do repozytoriów z jednoczesnym importem klucza podpisu,
+														pozwalającym zweryfikować autentyczność instalowanych pakietów)
+sudo apt-get update
+sudo apt-get install nazwa_ppa
+
+DLA PRZYKŁADU INSTALOWANIE JDK:
+sudo add-apt-repository ppa:webupd8team/java
+sudo apt-get update
+sudo apt-get install oracle-java8-installer
+
+

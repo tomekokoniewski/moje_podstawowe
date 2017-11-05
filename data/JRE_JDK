@@ -1,0 +1,66 @@
+JRE - środowisko, w którym działają programy w Javie
+JRE zawiera:
+	- JVM (java virtual machine) - Wirtualna maszyna Java to zestaw
+	aplikacji dostarczający w systemie operacyjnym środowisko, w którym
+	wykonywany jest program skompilowany do postaci kodu bajtowego (.class)
+	- Biblioteki
+
+JDK - zestaw narzędzi do budowania i uruchamiania programów w Javie
+JDK zawiera:
+	- JRE
+	- Narzędzia developerskie (javac - kompilator, jar - narzędzie
+	do tworzenia paczek uruchamianych przez JVM)
+	- Debugger
+
+Kod źródłowy jest zamieniany przez kompilator na KOD BAJTOWY (byte code)
+który uruchamiany jest na maszynie wirtualnej (JVM)
+
+
+---------
+Klasa
+- Podstawowy element w języku Java,
+- Definicja klasy opisuje stany (pola), oraz zachowania (metody)
+- Klasa to blok kodu w pliku .java
+- Nazwa pliku .java musi być taka sama jak nazwa klasy
+- Nazwy klas zaczynają się dużą literą - PascalCase
+
+---------
+Obiekt
+- Posiada stany i zachowania
+- Obiekt jest instancją klasy
+- Obiekt istnieje w pamięci - słowo kluczowe new Empolyee()
+
+---------
+Zmienne
+Typy proste:
+-byte zakres od -128 do 127
+-short zakres od -32 768 do 32 767
+-int zakres od -2 147 483 648 do 2 147 483 647
+-long zakres od -2^63 do 2^63-1 (long a = 100000L;)
+-float zakres ok. 7 cyfr po przecinku (float f1 = 234.5f;)
+-double zakres ok. 15 cyfr po przecinku )double d1 = 123.4d;)
+-char reprezentacja dowolnego pojedynczego znaku (char a1 = 'A';)
+-boolean przyjmuje tylko dwie wartość: prawda lub fałsz (boolean b1 = true;)
+
+Typy obiektowe:
+Zmienna jest tworzona przy użyciu klasy – referencja do obiektu
+Nazwa typu zaczyna się z dużej litery tak, jak nazwy klas
+Obiekt jest tworzony w pamięci, a zmienna przechowuje adres do obiektu
+Zmienna typu obiektowego może mieć wartość null
+Deklaracja (typ i nazwa zmiennej): String reportName;
+Inicjalizacja (przypisanie wartości): reportName = "Report1";
+Deklaracja i inicjalizacja: String reportName = "Report1";
+
+Zmienne obiektu (pola): - są niestatyczne "idą za utworzonym obiektem"
+Są zadeklarowane w klasie, poza metodami
+Dostęp do nich mają metody zdefiniowane w klasie
+Posiadają modyfikatory dostępu (podobnie jak klasa):
+public/protected/private/default
+Posiadają domyślną wartość (0 lub false dla zmiennych typu
+prostych oraz null dla zmiennych typu obiektowego)
+
+Zmienne klasy (pola)" - są statyczne "pozostaję w klasie"
+Słowo kluczowe static
+Są tworzone, gdy program jest uruchamiany
+Nie istotne ile obiektów klasy zostanie stworzonych – zawsze
+istnieje tylko jedna zmienna klasy

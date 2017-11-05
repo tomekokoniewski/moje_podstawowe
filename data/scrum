@@ -1,0 +1,158 @@
+SCRUM
+
+---------
+Backlog (Product Backlog)- uporządkowana lista wszystkiego co może byc potrzebne w projekcie
+oraz jedyne źródło wymagancyh zmian, które mają byc w produkcie wprowadzone.
+
+---------
+Właściciel Produktu (Product Owner) - odp za maksymalizację wartości produktu i pracy Zespołu Devwloperskiego.
+Sposoby w jakie jest to osiągane mogą się różnic, w zal od organizacji, Zespołu Scrumowego i osób.
+Jest jedyną osobą zarządzającą Backlogiem.
+
+---------
+Zespół Developerski (Development Team) - 3-9 osób, profesjonaliści których zadaniem jest dostarczenie na zakończenie
+każdego sprintu gotowego do potencjalnego wydania Przyrostu produktu. Tylko członkowie zespołu developerskiego tworzą przyrost.
+- Jest samoorganizujący się. Nikt nie może mówic Zespołowi jak przekształcac elementy backlogu w Przyrosty gotowej do
+potencjalnego wydania funkcjonalności.
+- Jest międzyfunkcjonalny - w swoim składzie posiadają wszystkie umiejętności niezbędne do wytworzenia Przyrostu.
+- W scrumie każsy członek Zespołu developerskiego to Developer, bez wzgl na charakter wykonywanej pracy. (nie ma innych tytułów).
+- Nie ma podzespołów w Zespole, niezależenie od wyk zadań (np. testowania czy analizy biznesowej).
+- Odp z wykonywaną pracę ponosi cały zespół developerski, mimo iż pojedyńczy członkowie
+Zespołu mogą posiadac wyspecjalizowane umiejętności i moga skupiac sie na konkretnych dziedzinach.
+
+---------
+Sprint - oznaczenie czasowe trwające max 1 mc, podczas którego wytwarzany
+jest "ukończony" gotowy do użycia i potencjalnego wydania Przyrost.
+
+---------
+Przyrost (Increment) - jest sumą wszystkich elementów backlogu zakończonych podczas sprintu i wszystkich sprintów poprzednich.
+Na koniec sprintu nowy przyrost musi byc ukończony, co oznacza że musi byc gotowy do użycia
+i zgodny z Definicją ukończenia danego zespołu scrumowego.
+Przyrost musi byc gotowy do użycia niezależnie czy Właściciel Produktu zdecyduje się na jego wydanie.
+
+---------
+Planowanie Sprintu (Sprint Planning) - daje odp na pytania:
+- Co może zostac dostarczoene w ramach Przyrostu będącego rezultatem nadchodzącego Sprintu?
+- W jaki sposób niezbędna do dostarczenia Przyrostu praca będzie realizowana ?
+Zazwyczaj ok 8h dla sprintu 1 mc.
+
+---------
+Cel Sprintu - określanu na Planowaniu - przez zespół Developerski - jak wiadomo które elementy Backlogu zostaną zrealizowane, Zespół
+tworzy Cel który zostanie osiągnięty w ramach Sprintu poprzez implementację wybranych elementów Backlogu Produktu.
+Pomaga Zespołowi Deweloperskiemu zrozumieć, w jakim	celu tworzony będzie Przyrost.
+
+---------
+Backlog Sprintu - zbiór elementów Backlogu Produktu wybranych do Sprintu i rozszerzony o
+plan dostarczenia Przyrostu produktu i realizacji celu Sprintu.
+
+---------
+Scrum Master - Przywódca służebny odpowiedzialny za to by scrum był rozumiany i stosowany.
+Zapewniają by Zespół scrumowy stosował się do założeń teorii scruma, jego praktyk i reguł.
+Pomaga osobom spoza Zespołu scrumowego zrozumie które z ich interakcji z Zespołem scrumowym
+są pomocne, a króre nie. Pomaga zmieniac te zachowania, aby maksymalizowac wartosc wytwarzaną
+przez Zespół scrumowy.
+
+---------
+Codzienny Scrum (Daily Scrum) - Przegląd dzienny co zostało zrobione wczoraj i plan pracy na 24h, czy widzę jakieś zagrożenia. Max 15 min.
+
+---------
+Przegląd Sprintu (Sprint Review) - ok. 4h dla sprintu 1 mc. Na zakończenie sprintu. Inspekcja Przyrostu.
+Zespół + Właściciel produktu + ew zaproszeni przez niego kluczowi interesariusze.
+
+---------
+Retrospektywa Sprintu (Sprint Retrospective) - ok. 3h dla sprintu 1 mc. Po przeglądzie sprintu, przed palnowaniem kolejnego.
+Ma na celu:
+- sprawdzenie, co	działo się w ostatnim Sprincie, biorąc pod uwagę ludzi, relacje, procesy i narzędzia,
+- zidentyfikowanie i uporządkowanie istotnych elementów, które sprawdziły się w działaniu oraz tych, które kwalifikują się do usprawnienia,
+- stworzenie planu wprowadzania	w życie	usprawnień sposobu	wykonywania	pracy przez Zespół	Scrumowy.
+
+----------
+Definicja ukończenie (Definition of done) - umożliwia ocenę czy praca nad przyrostem jest zakończona.
+Wszyscy członkowie Zespołu muszą miec wspólne rozumienie co oznacza że praca została zakończona.
+
+----------
+Przerwnie sprintu - Tylko Właściciel produktu może podjąc taka decyzje. Sprint może zostać przerwany,
+jeśli Cel	Sprintu	się	zdezaktualizuje.
+
+----------
+Elementy Scruma:
+3 ROLE - Właściciel produktu, Zespół developerski, Scrum master,
+5 ZDARZEŃ - Sprint, Planowanie sprintu, Codzienny scrum, Przegląd sprintu, Retrospektywa Sprintu
+3 ARTEFAKTY - Backlog produktu, Backlog sprintu, Przyrost.
+
+----------
+Timebox - limit czasowy w którym musi się coś odbyc - np. Codzienny Scrum - 15 min i nie więcej.
+
+----------
+Backlog Grooming/Backlog Refinement - Backlog grooming jest to dbanie backlogu poprzez jego aktualizację, ponowne jego spriorytetyzowanie
+oraz szacowanie elementów Product Backloga. Nie jest to formalny proces scrumowy, jednak jest rekomendowany, aby go stosować.
+Rekomendowaną praktyką jest to, aby spotkanie odbywało się cyklicznie (np. 1 raz w tygodniu). (ogólnie ma 5-10% czasu sprintu)
+W samym spotkaniu uczestniczyć powinny Product Owner, Scrum Master oraz Development Team. Głównymi zadaniami na spotkaniu jest
+doszczegóławianie User Storiesów , tworzenie nowych user storiesów, modyfikacje estymacji, opracowanie kryteriów akceptacji.
+Celem spotkania jest uporządkowanie product backlogu i jego priorytetyzacja pod kątem najbliższego Sprintu.
+
+----------
+Metody estymacji:
+Planning poker
+Bucket system
+
+----------
+Metody kontroli:
+Wykres spalania - ile zrobiono user stories w stosunku do czasu
+Wykres prędkości zespołu - w poszczególnych sprintach ile wzięto user stories i ile dowieziono.
+
+----------
+UESR STORIES:
+Jako ...<type of user>... chciałbym ...<some goal>... aby ...<some reason>...
+mapowanie user stories: W 1 wierszu rodzaje zadań, w 1 kolumnie relase(sprint), na przecięciach zadania user stories
+
+----------
+KANBAN:
+mamy kolumny z fazami, fazy sa podzielone na elementy w trakcie i wykonane.
+Każda faza ma swoją pojemnośc i z jednej fazy nie przechodzi do 2giej nawet jezeli jest zrobione - jezeli w 2 ciagle sa user stories w
+ilosci równej pojemności.
+Przykładowe fazy: Pending, Analysis, Development, Test, Deploy
+Ogólne zasady:
+- Map your current workflow,
+- Visualize your work,
+- Focus on flow,
+- Limit your work in process,
+- Measure and improve
+
+----------
+Capacity (pol. pojemność zespołu)
+Miara mówi nam o ‘pojemności’ zespołu. Pojemność na dany sprint mówi nam, ile z roboczodni zespołu mamy dostępnych w nadchodzącym sprincie.
+
+----------
+Velocity (pol. prędkość zespołu)
+Pokazuje sumę wyceny zadań skończonych w danych sprincie dla danego zespołu.
+
+----------
+Dług techniczny: Jest to cokolwiek w Waszym kodzie i środowisku (developerskim, testowym, produkcyjnym), co powoduje,
+że jesteście w swojej pracy wolniejsi.Na przykład:
+-nieczytelny kod,
+-brak testów automatycznych, brak automatyzacji wdrożeń,
+-zduplikowany kod,
+-powolne narzędzia, brak efektywnych narzędzi,
+-kod, który nie został “scommitowany”,
+-brak środowiska testowego,
+Widziałem firmy, które z uwagi na wielkość długu technicznego podejmowały (trwało to bardzo długo) decyzję o
+zaprzestaniu rozwoju produktu na rzecz konieczności jego stworzenia od nowa. Zapytacie „Dlaczego?”
+Ponieważ koszt utrzymania, a zwłaszcza wprowadzania nowych funkcjonalności do obecnego kodu, był tak duży,
+że stawał się tak bardzo długotrwały, że aż nieopłacalny.
+
+1c
+2b,d
+3a
+4a
+5b
+6c
+7c
+8d
+9
+10b
+
+
+
+
+
