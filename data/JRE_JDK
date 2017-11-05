@@ -12,26 +12,81 @@ JDK zawiera:
 	do tworzenia paczek uruchamianych przez JVM)
 	- Debugger
 
-Kod źródłowy jest zamieniany przez kompilator na KOD BAJTOWY (byte code)
-który uruchamiany jest na maszynie wirtualnej (JVM)
+Kod źródłowy jest zamieniany przez kompilator na KOD BAJTOWY (byte code) który uruchamiany jest na maszynie wirtualnej (JVM)
 
 
 ---------
-Klasa
+KLASA
 - Podstawowy element w języku Java,
 - Definicja klasy opisuje stany (pola), oraz zachowania (metody)
 - Klasa to blok kodu w pliku .java
 - Nazwa pliku .java musi być taka sama jak nazwa klasy
 - Nazwy klas zaczynają się dużą literą - PascalCase
+Klasa może miec modyfikator dostepu tylko public i default
+Klasa wewnętrzna może przyjmować dodatkowo modyfikator dostępu: private oraz protected
+
+
+KLASA ABSTRAKCYJNA
+▪ Jest to klasa oznaczona jako abstract, która posiada metody bez implementacji (metody abstrakcyjne)
+▪ Wymusza dalszą implementację do klas podrzędnych
+▪ Klasa abstrakcyjna służy do dziedziczenia oraz nadpisania wszystkich jej metod oznaczonych jako abstract
+▪ Nie może być zatem oznaczona jako final i private
+▪ Nie można utworzyć obiektu klasy abstrakcyjnej
+Metoda abstrakcyjna nie posiada impelentacji, ani nawet nawiasów klamrowych
+public abstract class Employee {
+    private String name;
+    public void setName(String s) {
+        name = s;
+    }
+    public abstract String getPosition();
+}
+Istnienie jednej metody bez implementacji oznacza, że klasa jest abstrakcyjna
+Pierwsza klasa dziedzicząca, która nie jest abstrakcyjna, musi zaimplementować wszystkie metody abstrakcyjne
 
 ---------
-Obiekt
+OBIEKT
 - Posiada stany i zachowania
 - Obiekt jest instancją klasy
 - Obiekt istnieje w pamięci - słowo kluczowe new Empolyee()
 
+--------
+METODY
+- Metody to zgrupowany ciąg instrukcji, który wykonuje określoną operację
+- Ciąg instrukcji zawarty w metodach powinien ograniczać się do jak najmniejszej liczby linii kodu
+- Metody posiadają nazwę
+- Metody mogą przyjmować parametry wejściowe
+- Metody mogą zwracać wartość
+
+Deklaracja:
+public final void methodName(int param1, ...) throws Exception {
+// ciało metody
+}
+Modyfikatory dostępu (metody i pola):
+- public (nieograniczony dostęp do metod, zmiennych)
+- private(dostęp do metod i pól tylko wewnątrz tej samej klasy)
+- protected (dostęp do metod, zmiennych wewnątrz tego samego pakietu oraz dla klas dziedziczących)
+- „default” (dostęp do metod, zmiennych wewnątrz tego samego pakietu)
+Modyfikatory dodatkowe: final / static / abstract
+Typ zwracany – void lub dowolny typ prosty lub obiektowy
+Parametry – oddzielane za pomocą przecinka. Parametrem metody może być tzn. „zmienny argument” (deklaroawny jako ostatni)
+ -> static void methodName(int... digits) {
+Rzucanie wyjątków – oddzielane za pomocą przecinka
+
+Przeładowanie metod:
+Istnieje możliwość zdefiniowania wielu metod o tej samej nazwie w jednej klasie
+Metody muszą różnić się listą parametrów
+
 ---------
-Zmienne
+KONSTRUKTORY
+- Konstruktor to specjalna metoda
+- W swojej deklaracji nie posiada zwracanego typu
+- Nazwa kontruktora musi być taka sama jak nazwa klasy
+- Konstruktor jest uruchamiany w momencie tworzenia nowego obiektu – słowo kluczowe new
+Można przeładowac konstruktory jak metody - muszą miec inną listę parametrów
+Można w konstruktorze wywołac inny konstruktor - instrukcja wywyołująca inny konstruktor musi byc w 1 lini konstruktora
+
+---------
+ZMIENNE
 Typy proste:
 -byte zakres od -128 do 127
 -short zakres od -32 768 do 32 767
@@ -64,3 +119,92 @@ Słowo kluczowe static
 Są tworzone, gdy program jest uruchamiany
 Nie istotne ile obiektów klasy zostanie stworzonych – zawsze
 istnieje tylko jedna zmienna klasy
+
+-----------
+HERMETYZACJA:
+Ukrywanie (zabezpieczanie) pól i metod klasy - private
+Bezpośredni dostęp do nich jest jedynie z kodu danej klasy
+Dostęp do ukrytego pola jest uzyskiwany porzez publiczne metody typu getter i setter
+
+Metoda setter zaczyna się od słowa set
+Metoda getter zaczyna się od słowa get (poza typem bool - wówczas zaczyna się is)
+Dalsza część nazwy metody to nazwa pola
+
+Istnije możliwość stworzenia klasy „niezmiennej” - immutable
+▪ Klasa posiada pole private oraz metodę getter dla tego pola
+▪ Klasa nie posiada metody setter dla tego pola
+▪ Wartość pola jest ustawiana w konstruktorze
+▪ Przykład: klasa String
+
+
+----------
+DZIEDZICZENIE:
+Klasa może dziedziczyć po innej klasie (rozszerza ją) - Słowo kluczowe extends
+- Dziedziczyć można tylko z jednej klasy
+- Klasa dziedzicząca uzyskuje pola i metody – ich implementacja pozostaje w klasie nadrzędnej
+- Oznaczenie klasy jako final oznacza, że po tej klasie nie będzie można dziedziczyć
+- W języku Java każda klasa dziedziczy po klasie Object (Instrukcja extend Object jest dodawana podczas compilacji klasy)
+
+Wywołanie domyślnego konstruktora klasy podrzędnej powoduje także wywołanie domyślnego konstruktora klasy nadrzędnej
+Gdy w klasie nadrzędnej istnieje konstruktor z parametrem to konstruktor klasy podrzędnej musi go wywołać – super()
+Instrukcja super() musi być zawsze w pierwszej linii konstruktora
+
+W klasie dziedziczącej można nadpisać metodę, którą dana klasa otrzymała z klasy nadrzędnej - @Override
+Oznaczenie metody jako final oznacza, że w klasie dziedziczącej nie będzie można tej metody nadpisać.
+
+W klasie dziedziczącej można ukryć zmienną, którą dana klasa otrzymała z klasy nadrzędnej
+Ukrycie polega na zadeklarowaniu zmiennej o takiej samej nawie jak w klasie nadrzędnej
+
+
+------------
+INTERFEJS:
+Interfejs to element abstrakcyjny w języku Java
+Dla interfejsów nie można tworzyć obiektów
+Interfejs zawiera jedynie listę metod abstrakcyjnych (bez implementacji), które klasa implementująca musi posiadać
+Interfejs może też zawierać zmienne do której klasa może się odwołać – final jest dla niej narzucone
+Klasy mogą implementować wiele interfejsów (implementacja przez implements a nie extends jak w przypadku klas)
+Interfejs może dziedziczyć po wielu interfejsach (klasy tylko po jednej)
+
+------------
+POLIMORFIZM – klasy nadrzędne:
+- Obiekty mogą przyjmować różne formy
+- Dostęp do obiektu może odbywać się poprzez jego klasy nadrzędne, które dziedziczy lub interfejsy, które implementuje
+- Stosuje się wtedy, gdy występują różne klasy dziedziczące lub implementujące interfejsy i istnieje potrzeba operowania na takich
+obiektach na „wyższym poziomie abstrakcji”
+
+
+--------
+WYJĄTKI:
+Wyjątki to klasy, które dziedziczą z klasy java.lang.Exception
+Wyróżnia się wśród nich wyjątki, które dziedziczą z klasy java.lang.RuntimeException – nie muszą one być obsłużone
+▪ Można tworzyć własne klasy wyjątków - dziedziczenie
+▪ Obsługę (łapanie) wyjątków wykonuje się poprzez instrukcję try/catch
+▪ Przekazanie wyjątku do metody nadrzędnej wykonuje się poprzez instrukcję throws
+
+▪ Metoda może rzucić dowolny wyjątek poprzez instrukcję throw
+▪ Można utworzyć własną klasę, aby rzucić wyjątek nowego typu
+▪ Jeżeli metoda rzuca wyjątek z klasy java.lang.Exception to musi być w jej deklaracji dodana instrukcja throws – wtedy metoda nadrzędna
+musi taki wyjątek obsłużyć
+▪ Jeżeli metoda rzuca wyjątek z klasy java.lang.RuntimeException to nie musi być w jej deklaracji dodanej instrukcji throws – wtedy metoda
+nadrzędna nie musi obsłużyć wyjątku
+
+---------
+Enum
+▪ W języku Java istnieje specjalny typ enum
+▪ Pozwala on na definiowane wybranego zbioru stałych wartości
+public enum Format {
+    PDF, WORD
+}
+▪ Elementy zbioru muszą być unikalne
+▪ Enum może posiadać własne pola i metody
+
+----------------------------
+Kolekcje
+▪ W języku Java jest wiele interfejsów, które zawierają listę
+podstawowych metod mających zastosowanie przy pracy z kolekcjami
+▪ Przykłady interfejsów: java.util.Collection, java.util.List, java.util.Set,
+java.util.Map
+▪ Istnieje wiele klas, które implementują powyższe interfejsy, np.:
+List list = new ArrayList(); Elementy w liście mogą się powtarzać,Elementy są wstawiane na podanej pozycji na liście (indeks),LinkedList stosuje się, gdy jest dużo operaji dodawania/usuwania
+Set set = new HashSet(); nie zapewnia kolejności elementów, TreeSet gwarantuje sortowanie,LinkedHashSet pamięta kolejność dodawania elementów
+Map map = new HashMap(); Zawiera pary klucz-wartość, Klucze są unikalne, Podstawową implementacją jest HashMap, która nie zapewnia kolejności elementów,TreeMap gwarantuje sortowanie,LinkedHashMap pamięta kolejność dodawania elementów

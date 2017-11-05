@@ -109,6 +109,9 @@ public class Main extends New {     //klasa Main dziedziczy po klasie New, musz�
         int a = 1, b = 2, c;
         System.out.println(a++); //wydrukuje wart "a" = 1 a następnie zwiększy ją o 1 (a = 2) (inkrementacja postfixowa) //1
         System.out.println(++b); //zwiększy wartoś b o jeden i wydrukuje (inkrementacja predfixowa) //3
+
+        a+=2; //a=a(2)+2=4
+        System.out.println(a);
     }
 
     // -------- OPERATORY PORÓWNAWCZE I LOGICZNE
