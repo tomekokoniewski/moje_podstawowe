@@ -53,6 +53,7 @@ public class Main extends New {     //klasa Main dziedziczy po klasie New, muszÄ
         dziedzNadpisywanie();
         klasaAbstr();
         interfejs();
+        interfejs2();
         polimorfizm();
         pmfzmPrzyklad();
         porownania();
@@ -364,6 +365,12 @@ public class Main extends New {     //klasa Main dziedziczy po klasie New, muszÄ
         for (int x : listaIntegerow) {
             System.out.println(x);
         }
+
+        //przykÅ‚ad uÅ¼ycia metod z klasy "java.util.Collections"
+        System.out.println("wartoÅ›c najmniejsza z listy 1-3: "+Collections.min(listaIntegerow));
+        System.out.println("wartoÅ›c najwiÄ™ksza z listy 1-3: "+Collections.max(listaIntegerow));
+
+
     }
 
     // -------- STRING BUILDER
@@ -613,7 +620,7 @@ public class Main extends New {     //klasa Main dziedziczy po klasie New, muszÄ
         System.out.println("\n------ INTERFEJS");
 
         InterfaceImplementation osoba = new InterfaceImplementation("Jan",20);
-        System.out.println("Osoba: "+osoba.getName()+" lat "+osoba.getWiek());
+        System.out.println("Osoba: "+osoba.getName()+" lat "+osoba.getWiek()+" "+osoba.kontynent+" "+osoba.kraj);
 
     //Interfejs to element abstrakcyjny - nie mozna tworzyÄ‡ dla niego obiektow
 
@@ -637,6 +644,22 @@ public class Main extends New {     //klasa Main dziedziczy po klasie New, muszÄ
             BigDecimal getIncome ();
         }
     */
+    }
+
+    // ------- INTERFEJS 2
+    public static void interfejs2() {
+        System.out.println("\n------ INTERFEJS2");
+
+        MaxMinOperation operacja = new MaxMinOperation();
+        List<Integer> intListjava8Demo = Arrays.asList(-2, -1, 0, 1, 2,3);
+
+        MaxOperation maxOperation = new MaxOperation();
+        MinOperation minOperation = new MinOperation();
+
+        operacja.getResult(intListjava8Demo,maxOperation);
+        operacja.getResult(intListjava8Demo,minOperation);
+
+
     }
 
     // ------- POLIMORFIZM

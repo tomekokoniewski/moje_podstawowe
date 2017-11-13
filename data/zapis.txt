@@ -70,3 +70,8 @@ nowa linia Mon Oct 23 20:06:43 CEST 2017
 nowa linia Mon Oct 23 20:32:20 CEST 2017
 nowa linia Mon Oct 23 20:36:16 CEST 2017
 nowa linia Mon Oct 23 20:38:58 CEST 2017
+nowa linia Thu Nov 09 20:15:20 CET 2017
+nowa linia Thu Nov 09 20:19:48 CET 2017
+nowa linia Mon Nov 13 18:22:27 CET 2017
+nowa linia Mon Nov 13 18:42:26 CET 2017
+nowa linia Mon Nov 13 18:43:07 CET 2017
