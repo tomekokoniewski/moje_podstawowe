@@ -12,6 +12,8 @@ import java.text.SimpleDateFormat;  //dateTime();
 import java.util.*;                 //rndm(), scanner()
 import java.util.regex.Matcher;     //pattMatch();
 import java.util.regex.Pattern;     //pattMatch();
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import pl.tok.beginerNew.New;       //zaimportowanie mojego własnego pakietu aby móc po nim dziedziczyć
 
@@ -57,7 +59,7 @@ public class Main extends New {     //klasa Main dziedziczy po klasie New, musz�
         polimorfizm();
         pmfzmPrzyklad();
         porownania();
-
+        strumienie();
     }
 
     // -------- DRUKOWANIE NA EKAN
@@ -111,7 +113,7 @@ public class Main extends New {     //klasa Main dziedziczy po klasie New, musz�
         System.out.println(a++); //wydrukuje wart "a" = 1 a następnie zwiększy ją o 1 (a = 2) (inkrementacja postfixowa) //1
         System.out.println(++b); //zwiększy wartoś b o jeden i wydrukuje (inkrementacja predfixowa) //3
 
-        a+=2; //a=a(2)+2=4
+        a += 2; //a=a(2)+2=4
         System.out.println(a);
     }
 
@@ -367,8 +369,8 @@ public class Main extends New {     //klasa Main dziedziczy po klasie New, musz�
         }
 
         //przykład użycia metod z klasy "java.util.Collections"
-        System.out.println("wartośc najmniejsza z listy 1-3: "+Collections.min(listaIntegerow));
-        System.out.println("wartośc największa z listy 1-3: "+Collections.max(listaIntegerow));
+        System.out.println("wartośc najmniejsza z listy 1-3: " + Collections.min(listaIntegerow));
+        System.out.println("wartośc największa z listy 1-3: " + Collections.max(listaIntegerow));
 
 
     }
@@ -584,13 +586,13 @@ public class Main extends New {     //klasa Main dziedziczy po klasie New, musz�
     }
 
     // ------- DZIEDZICZENIE, PRZEKAZANIE PARAMETRU Z KLASY DZIEDZICZĄCEJ DO KLASY NADRZĘDNEJ
-    public static void dziedziczenie(){
+    public static void dziedziczenie() {
         System.out.println("\n------ DZIEDZICZENIE");
         KlasaDziedziczaca.test(); //1. wywołuję metode porownania w KD
 
-    //    Gdy w klasie nadrzędnej istnieje konstruktor z parametrem to
-    //    konstruktor klasy podrzędnej musi go wywołać – super()
-    //    Instrukcja super() musi być zawsze w pierwszej linii konstruktora
+        //    Gdy w klasie nadrzędnej istnieje konstruktor z parametrem to
+        //    konstruktor klasy podrzędnej musi go wywołać – super()
+        //    Instrukcja super() musi być zawsze w pierwszej linii konstruktora
     }
 
     // ------- DZIEDZICZENIE - NADPISYWANIE METOD
@@ -611,24 +613,24 @@ public class Main extends New {     //klasa Main dziedziczy po klasie New, musz�
 
         KlasaAbstrDziedziczaca.test();
 
-    //Klasa abstrakcyjna ma  przynajmniej jedną metodę abstrakcyjną,
-    //klasa dziedzicząca po klasie abstrakcyjnej musi nadpisywać metodę abstrakcyjną z klasy abstrakcyjnej
+        //Klasa abstrakcyjna ma  przynajmniej jedną metodę abstrakcyjną,
+        //klasa dziedzicząca po klasie abstrakcyjnej musi nadpisywać metodę abstrakcyjną z klasy abstrakcyjnej
     }
 
     // ------- INTERFEJS
     public static void interfejs() {
         System.out.println("\n------ INTERFEJS");
 
-        InterfaceImplementation osoba = new InterfaceImplementation("Jan",20);
-        System.out.println("Osoba: "+osoba.getName()+" lat "+osoba.getWiek()+" "+osoba.kontynent+" "+osoba.kraj);
+        InterfaceImplementation osoba = new InterfaceImplementation("Jan", 20);
+        System.out.println("Osoba: " + osoba.getName() + " lat " + osoba.getWiek() + " " + osoba.kontynent + " " + osoba.kraj);
 
-    //Interfejs to element abstrakcyjny - nie mozna tworzyć dla niego obiektow
+        //Interfejs to element abstrakcyjny - nie mozna tworzyć dla niego obiektow
 
-    //Interfejs zawiera jedynie listę metod abstrakcyjnych (bez
-    //implementacji), które klasa implementująca musi posiadać
+        //Interfejs zawiera jedynie listę metod abstrakcyjnych (bez
+        //implementacji), które klasa implementująca musi posiadać
 
-    //Interfejs może też zawierać zmienne do której klasa może się odwołać (tak naprawdę stałe)
-    //– final jest dla niej narzucone
+        //Interfejs może też zawierać zmienne do której klasa może się odwołać (tak naprawdę stałe)
+        //– final jest dla niej narzucone
 
     /*Klasy mogą implementować wiele interfejsów
         public class Driver implements EmployeeInterface, HumanInterface {
@@ -651,16 +653,17 @@ public class Main extends New {     //klasa Main dziedziczy po klasie New, musz�
         System.out.println("\n------ INTERFEJS2");
 
         MaxMinOperation operacja = new MaxMinOperation();
-        List<Integer> intListjava8Demo = Arrays.asList(-2, -1, 0, 1, 2,3);
+        List<Integer> intListjava8Demo = Arrays.asList(-2, -1, 0, 1, 2, 3);
 
         MaxOperation maxOperation = new MaxOperation();
         MinOperation minOperation = new MinOperation();
 
-        operacja.getResult(intListjava8Demo,maxOperation);
-        operacja.getResult(intListjava8Demo,minOperation);
+        operacja.getResult(intListjava8Demo, maxOperation);
+        operacja.getResult(intListjava8Demo, minOperation);
 
 
     }
+
 
     // ------- POLIMORFIZM
     public static void polimorfizm() {
@@ -668,20 +671,20 @@ public class Main extends New {     //klasa Main dziedziczy po klasie New, musz�
 
         Podrzedna.test();
 
-    //Polimorfizm to zdolność przyjmowania przez obiekt formy klasy nadrzędnej
-    //jeżeli mam klase A i dziedziczącą po niej B to "standardowo" tworzę obiekt
-    // B nazwaObiektu = new B; //-obiekt klasy B typu B
-    // wykorzystując polimorfizm mogę utworzyć obiekt klasy B typu A (po którym dziedziczy B)
-    // A nazwaObiektu = new B;
+        //Polimorfizm to zdolność przyjmowania przez obiekt formy klasy nadrzędnej
+        //jeżeli mam klase A i dziedziczącą po niej B to "standardowo" tworzę obiekt
+        // B nazwaObiektu = new B; //-obiekt klasy B typu B
+        // wykorzystując polimorfizm mogę utworzyć obiekt klasy B typu A (po którym dziedziczy B)
+        // A nazwaObiektu = new B;
     }
 
     //----- PRZYKŁAD POLIFORMIZMU ------
-    public static void pmfzmPrzyklad(){
+    public static void pmfzmPrzyklad() {
         PolimorfizmDirector director = new PolimorfizmDirector();
         PolimorfizmDriver driver = new PolimorfizmDriver();
 
-    // metoda PolimorfizmBusinessCard może przyjmować obiekty klas "director" i "driver" gdyż obie
-    // implementują ten sam interfejs
+        // metoda PolimorfizmBusinessCard może przyjmować obiekty klas "director" i "driver" gdyż obie
+        // implementują ten sam interfejs
 
         String directorCard = PolimorfizmBusinessCard.getBusinessCard(director);
         String driverCard = PolimorfizmBusinessCard.getBusinessCard(driver);
@@ -690,33 +693,135 @@ public class Main extends New {     //klasa Main dziedziczy po klasie New, musz�
     }
 
     // ------- PORÓWNANIA OBIEKTÓW
-    public static void porownania(){
-    System.out.println("\n------ PORÓWNANIA OBIEKTÓW");
+    public static void porownania() {
+        System.out.println("\n------ PORÓWNANIA OBIEKTÓW");
 
-    StringBuilder stringBuilder1 = new StringBuilder("abc");
-    StringBuilder stringBuilder2 = new StringBuilder("abc");
-    System.out.println(stringBuilder1.equals(stringBuilder2)); //false, to dwa różne obiekty
-    //(equals sprawdza w tym wypadku odwołania do obiektów), mają take dwa inne hashCode (identyfikatory obiektów)
-    System.out.println(stringBuilder1==stringBuilder2); //false, porównywane są reference do obiektow a nie wartości
-    System.out.println(stringBuilder1.hashCode()+" "+stringBuilder2.hashCode()); // dwa różne hashCode
+        StringBuilder stringBuilder1 = new StringBuilder("abc");
+        StringBuilder stringBuilder2 = new StringBuilder("abc");
+        System.out.println(stringBuilder1.equals(stringBuilder2)); //false, to dwa różne obiekty
+        //(equals sprawdza w tym wypadku odwołania do obiektów), mają take dwa inne hashCode (identyfikatory obiektów)
+        System.out.println(stringBuilder1 == stringBuilder2); //false, porównywane są reference do obiektow a nie wartości
+        System.out.println(stringBuilder1.hashCode() + " " + stringBuilder2.hashCode()); // dwa różne hashCode
 
-    //Niektóre obiekty mają nadpisane metody equals i hashCode tak aby można je było łatwo porównywać
-    System.out.println(new Integer(3).equals(new Integer(3) )); //true
-    System.out.println(new Integer(3).hashCode()+" "+new Integer(3).hashCode()); //3 i 3
+        //Niektóre obiekty mają nadpisane metody equals i hashCode tak aby można je było łatwo porównywać
+        System.out.println(new Integer(3).equals(new Integer(3))); //true
+        System.out.println(new Integer(3).hashCode() + " " + new Integer(3).hashCode()); //3 i 3
 
-    //Aby móc sprawdzac czy obiekty są sobie równe należy nadpisać w ich klasach metody
-    // equals oraz hasCode (w Intelij są feneratory metod dostępne pod alt+Insert
+        //Aby móc sprawdzac czy obiekty są sobie równe należy nadpisać w ich klasach metody
+        // equals oraz hasCode (w Intelij są feneratory metod dostępne pod alt+Insert
     }
 
     // ------- WYJĄTKI
-    public static void wyjatki(){
+    public static void wyjatki() {
         System.out.println("\n------ WYJĄTKI");
         // obsługa przez "try/catch", przekazanie do klasy nadrzędnej przez "throws"
 
-        
+//do skończenia
 
     }
 
+    // ------- STRUMIENIE
+    public static void strumienie() {
+        System.out.println("\n------ STRUMIENIE");
+
+        // przykład 1 - strumien przefiltrowany i zwrócony do Listy
+        List<String> names = Arrays.asList("Jan", "", "Wioletta", null, "Maria");
+        System.out.println(names); //[Jan, , Wioletta, null, Maria]
+        List<String> filtered =
+                names.stream()
+                        .filter(s -> s != null && !s.isEmpty())
+                        .sorted()
+                        .collect(Collectors.toList());
+                        //Kolektor służy do łączenia strumienia i zwrócenia wyniku do List lub String
+        System.out.println(filtered); // [Jan, Maria, Wioletta]
+
+        // przykład 2
+        String[] names1 = {"Wioletta", "Maria"};
+        Stream<String> stream = Stream.of(names1);
+        List<String> list = stream.collect(Collectors. toList());
+        System. out.println(list); // [Wioletta, Maria]
+
+        List<String> names2 = Arrays.asList("Jan", "Tomasz");
+        String str = names2.stream().collect(Collectors. joining("; "));
+        System. out.println(str); // Jan; Tomasz
+
+        //Metoda forEach w strumieniu
+        //Metoda wykonuje iterację po każdym elemencie strumienia i wywołuje wskazaną instrukcję.
+        List<String> names3 = Arrays. asList("Jan", "Wioletta", "Maria");
+        names3.forEach(s -> {String dots = "..."; System. out.println(s.concat(dots));});
+
+        //Metoda map
+        //Metoda jest używana do mapowania każdego elementu do odpowiedniego wyniku.
+        List<Integer> numbers = Arrays.asList(8, 3, 5);
+        List<Integer> mapped =
+                numbers.stream()
+                        .map(i -> 2 * i)
+                        .collect(Collectors. toList());
+        System. out.println(mapped); // 16, 6, 10
+
+        //Metoda filter
+        //Metoda jest używana do usunięcia elementów ze strumienia na  podstawie podanego kryterium.
+        List<String> names5 = Arrays.asList("Jan", "Wioletta", "Maria");
+        List<String> filtered1 =
+                names5.stream()
+                        .filter(s -> s.contains("i"))
+                        .collect(Collectors.toList());
+        System. out.println(filtered1); // Wioletta, Maria
+
+        //Metoda match
+        //Metoda jest używana do sprawdzenia czy dany predykat odpowiada strumieniowi. Metoda zwraca wartość logiczną.
+        List<String> names6 = Arrays.asList("Jan", "Wioletta", "Maria");
+        boolean allMatched =
+                names6.stream()
+                        .allMatch(s -> s.contains("i"));
+        System. out.println(allMatched); //false
+        boolean anyMatched =
+                names6.stream()
+                        .anyMatch(s -> s.contains("i"));
+        System. out.println(anyMatched); //true
+
+        //Metoda limit
+        //Metoda jest używana do zredukowania liczby elementów zawartych w strumieniu.
+        List<String> names7 = Arrays. asList("Jan", "Wioletta", "Maria");
+        List<String> filtered2 =
+                names7.stream()
+                        .limit(2)
+                        .collect(Collectors. toList());
+        System. out.println(filtered2); // Jan, Wioletta
+
+        //Metoda count
+        //Metoda jest używana do wyliczenia ilości elementów w strumieniu.
+        List<String> names8 = Arrays. asList("Jan", "Wioletta", "Maria");
+        long count =
+                names8.stream()
+                        .filter(s -> s.contains("i"))
+                        .count();
+        System. out.println(count); // 2
+
+        //Statystyki
+        //Umożliwiają wyliczanie różnych statystyk po tym, jak przetwarzanie strumienia dobiegło końca.
+        List<Integer> numbers1 = Arrays.asList(8, 3, 5);
+        IntSummaryStatistics stats =
+                numbers1.stream()
+                        .mapToInt(x -> 2 * x)
+                        .summaryStatistics();
+        System. out.println(stats.getMax()); // 16
+        System. out.println(stats.getMin()); // 6
+        System. out.println(stats.getSum()); // 32
+        System. out.println(stats.getAverage()); // 10.66666666
+
+        //Strumienie równoległe
+        //Operacje na strumieniach równoległych wykonywane są w kilku wątkach jednocześnie:
+        List<String> names9 = Arrays. asList("Jan", "", "Wioletta", null, "Maria");
+        List<String> filtered3 =
+                names9.parallelStream()
+                        .filter(s -> s != null && !s.isEmpty())
+                        .sorted()
+                        .collect(Collectors. toList());
+        System. out.println(filtered3); // [Jan, Maria, Wioletta]
+
+
+    }
 }
 
 
