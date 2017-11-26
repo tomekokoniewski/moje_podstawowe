@@ -379,6 +379,12 @@ public class Main extends New {     //klasa Main dziedziczy po klasie New, muszÄ
         System.out.println("wartoÅ›c najmniejsza z listy 1-3: " + Collections.min(listaIntegerow));
         System.out.println("wartoÅ›c najwiÄ™ksza z listy 1-3: " + Collections.max(listaIntegerow));
 
+        //lista utworzona przez": List x = Arrays.asList(el1,el2...) ma staÅ‚y rozmiar,
+        //nie moÅ¼na na niej zrobic
+        // x.add(el3);
+        //Trzeba by z niej zrobiÄ‡ listÄ™ jak ponizej:
+        List<Integer> a = new ArrayList<>(Arrays.asList(1,2,3));
+        System.out.println("UWAGA "+a);
 
     }
 
@@ -668,6 +674,8 @@ public class Main extends New {     //klasa Main dziedziczy po klasie New, muszÄ
     */
     }
 
+
+
     // ------- INTERFEJS 2
     public static void interfejs2() {
         System.out.println("\n------ INTERFEJS2");
@@ -680,6 +688,17 @@ public class Main extends New {     //klasa Main dziedziczy po klasie New, muszÄ
 
         operacja.getResult(intListjava8Demo, maxOperation);
         operacja.getResult(intListjava8Demo, minOperation);
+
+        //
+        List list = new ArrayList();
+
+
+        List<Integer> x = Arrays.asList(1,2,3);
+        x.add(1);
+
+
+
+
 
 
     }
@@ -765,7 +784,10 @@ public class Main extends New {     //klasa Main dziedziczy po klasie New, muszÄ
         System.out.println("\n-------KOLEKCJE LIST, SET, MAP");
 
         //LIST - elementy mogÄ… siÄ™ powtarzac, elementy wstawiane sÄ… pod indeksem (od zera)------------------------------
+
         List l1 = new ArrayList();
+        l1 = new ArrayList();
+
         l1.add("1");
         l1.add("a");
         l1.add(3);
@@ -833,6 +855,16 @@ public class Main extends New {     //klasa Main dziedziczy po klasie New, muszÄ
     }
 
     // ------- STRUMIENIE
+/*
+        List<String> names = Arrays.asList("Jan", "", "Wioletta", null, "Maria");
+        String[] tabl1 = {"1","q"};
+        ArrayList al1 = new ArrayList();
+            al1.add(1);
+        List l0 = new ArrayList();
+            l0.add(1);
+        List ll = Arrays.asList();
+*/
+
     public static void strumienie() {
         System.out.println("\n------ STRUMIENIE");
 
@@ -932,6 +964,8 @@ public class Main extends New {     //klasa Main dziedziczy po klasie New, muszÄ
                         .collect(Collectors. toList());
         System. out.println(filtered3); // [Jan, Maria, Wioletta]
     }
+
+
 }
 
 
