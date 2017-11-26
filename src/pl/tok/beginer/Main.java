@@ -1,6 +1,8 @@
 package pl.tok.beginer;
 
 import static java.lang.Math.*;     //mat()
+import static pl.tok.beginer.EnumExample.CLOSE;
+import static pl.tok.beginer.EnumExample.OPEN;
 
 import java.io.File;                //scnr()
 import java.io.FileNotFoundException; //scnr()
@@ -16,6 +18,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import pl.tok.beginerNew.New;       //zaimportowanie mojego własnego pakietu aby móc po nim dziedziczyć
+import sun.util.cldr.CLDRLocaleDataMetaInfo;
 
 public class Main extends New {     //klasa Main dziedziczy po klasie New, muszę ją jednak wcześniej zaimportować
 
@@ -47,6 +50,7 @@ public class Main extends New {     //klasa Main dziedziczy po klasie New, musz�
         stat();
         passParam();
         passParam1();
+        paramZmiennyArg();
         kons();
         getSet();
         getSetHerm();
@@ -59,6 +63,9 @@ public class Main extends New {     //klasa Main dziedziczy po klasie New, musz�
         polimorfizm();
         pmfzmPrzyklad();
         porownania();
+        //wyjatki();
+        enum1();
+        kolekcje();
         strumienie();
     }
 
@@ -532,6 +539,19 @@ public class Main extends New {     //klasa Main dziedziczy po klasie New, musz�
         a.append("123");
     }
 
+    //-------- PRZEKAZYWANIE PARAMETRÓW - ZMIENNY ARGUMENT
+
+    public static void paramZmiennyArg(){
+        System.out.println("\n-------PRZEKAZYWANIE PARAMETRÓW  - ZMIENNY ARGUMENT");
+        zmiennyArg(1,2,10,20);
+    }
+
+    public static void zmiennyArg(int...digits){
+        for (int i:digits){
+            System.out.println(i);
+        }
+    }
+
     //----------------------------------------------------------------------------------------------------------------------
     //-------- KONSTRUKTORY
     public static void kons() {
@@ -664,7 +684,6 @@ public class Main extends New {     //klasa Main dziedziczy po klasie New, musz�
 
     }
 
-
     // ------- POLIMORFIZM
     public static void polimorfizm() {
         System.out.println("\n------ POLIMORFIZM");
@@ -717,7 +736,100 @@ public class Main extends New {     //klasa Main dziedziczy po klasie New, musz�
         // obsługa przez "try/catch", przekazanie do klasy nadrzędnej przez "throws"
 
 //do skończenia
+    }
 
+    //-------- ENUM - prosty przykład enuma
+    public static void enum1(){
+        System.out.println("\n-------ENUM");
+        testEnuma(CLOSE);
+    }
+
+    public static void testEnuma(EnumExample ee){
+        switch (ee){
+            case OPEN:
+                System.out.println("wykonuje proc dla OPEN");
+                break;
+            case CLOSE:
+                System.out.println("wykonuje proc dla CLOSE");
+                break;
+            case LOW:
+                System.out.println("wykonuje proc dla LOW");
+                break;
+        }
+
+    }
+
+
+    //-------- KOLEKCJE - LIST, SET, MAP
+    public static void kolekcje(){
+        System.out.println("\n-------KOLEKCJE LIST, SET, MAP");
+
+        //LIST - elementy mogą się powtarzac, elementy wstawiane są pod indeksem (od zera)------------------------------
+        List l1 = new ArrayList();
+        l1.add("1");
+        l1.add("a");
+        l1.add(3);
+        l1.remove(1); //po usunięciu danej pozycji na jej miejsce (indeks) wchodzi element kolejny (przesuwa się)
+        System.out.println(l1.get(1)); //3
+        //ArrayList używamy gdy chcemy miec szybki dostęp do losowych elementow listy (wyszukiwanie)
+        //LinkedList używamy gdy często usuwa i dodaje się elementy (update insert delete)
+
+        //SET - elementy nie będą się powtarzac,------------------------------------------------------------------------
+            //HashSet - nie zapewnia kolejności elementow
+            //LinkedHashSet - pamięta kolejnośc dodawania elementów
+            //TreeSet - gwarantuje sortowanie
+        Set <String>s1 = new HashSet<>();
+        s1.add("zd");
+        s1.add("dw");
+        s1.add("gg");
+        s1.add("dw"); //nie zostanie dodane - już jest
+        System.out.println(s1); //gg,dw,zd - kolejnośc przypadkowa
+
+        Set <String>s2 = new TreeSet<>();
+        s2.add("zd");
+        s2.add("dw");
+        s2.add("gg");
+        s2.add("dw"); //nie zostanie dodane - już jest
+        System.out.println(s2); //dw,gg,zd - posortowane
+
+        Set <String>s3 = new LinkedHashSet<>();
+        s3.add("zd");
+        s3.add("dw");
+        s3.add("gg");
+        s3.add("dw"); //nie zostanie dodane - już jest
+        System.out.println(s3); //zd, dw, gg - wg kolejności dodawania
+
+        //MAP - zawiera pary - KLUCZ | WARTOSC (klucze są unikalne)
+            //HashMap nie zapwenia kolejności elementów
+            //TreeMap gwarantuje sortowanie
+            //LinkedHashMap pamięta kolejnośc dodawania elemantów
+        HashMap<String, Integer> m1 = new HashMap<>();
+        m1.put("zz", 4);
+        m1.put("zy", 2);
+        m1.put("za", 6);
+        m1.put("za", 1);
+        System.out.println(m1.get("za")); // 1 zwróci wartosc dla klucza - ostatnia wartośc zapisana
+        System.out.println(m1.keySet()); // [zz, za, zy] zwróci listę kluczy
+        System.out.println(m1.values()); // [4, 1, 2] zwroci liste wartosci
+
+        TreeMap<String, Integer> m2 = new TreeMap<>();
+        m2.put("zz", 4);
+        m2.put("zy", 2);
+        m2.put("za", 6);
+        m2.put("za", 1);
+        System.out.println(m2.get("za")); // 1
+        System.out.println(m2.keySet()); // [za, zy, zz] //POSORTOWANE
+        System.out.println(m2.values()); // [1, 2, 4] //POSORTOWANE
+
+        LinkedHashMap<String, Integer> m3 = new
+                LinkedHashMap<>();
+        m3.put("zz", 4);
+        m3.put("zy", 2);
+        m3.put("za", 6);
+        m3.put("za", 1);
+        System. out.println(m3.get("za")); // 1
+        System. out.println(m3.keySet()); // [zz, zy, za] //wg kolejnosci dodawania
+        System. out.println(m3.values()); // [4, 2, 1] //wg kolejnosci dodawania
     }
 
     // ------- STRUMIENIE
@@ -819,8 +931,6 @@ public class Main extends New {     //klasa Main dziedziczy po klasie New, musz�
                         .sorted()
                         .collect(Collectors. toList());
         System. out.println(filtered3); // [Jan, Maria, Wioletta]
-
-
     }
 }
 
