@@ -127,7 +127,7 @@ public class Main extends New {     //klasa Main dziedziczy po klasie New, musz�
         System.out.println(4 >= 3);        //true - (sprawdzenie czy a>=b - prawda) a=4, b=3
         System.out.println("\n");
         System.out.println((4 >= 3) && (4 <= 3));    //false - (PRAWDA and FAŁSZ) jeden z warunków = fałsz -> całe twierdzenie fałszywe
-        System.out.println((4 >= 3) || (4 <= 3));    //true - (PRAWDA and FAŁSZ) jeden z warunków = prawdziwy -> całe twierdzenie prawdziwe
+        System.out.println((4 >= 3) || (4 <= 3));    //true - (PRAWDA or FAŁSZ) jeden z warunków = prawdziwy -> całe twierdzenie prawdziwe
 
     }
 
